@@ -5,6 +5,8 @@ description: 운영체제에 대해 알아보자
 tags:
   - 운영체제
   - 자원
+  - 커널
+  - 이중모드
   - 시스템 콜
 ---
 
@@ -25,9 +27,7 @@ export const Image = ({ src, size }) => {
   );
 };
 
-### 1. 운영체제를 알아야 하는 이유 `#운영체제`
-
----
+## 운영체제를 알아야 하는 이유
 
 - 모든 프로그램은 하드웨어를 필요로 한다.
 - 이때 프로그램 실행에 필요한 요소들을 **시스템 자원**, 줄여서 **자원**이라고 한다.
@@ -47,6 +47,11 @@ export const Image = ({ src, size }) => {
 사용자 영역: 커널 영억을 제외한 나머지 영역, 사용자가 이용하는 응용 프로그램이 적재되는 영역
 즉, 운영체제는 커널 영역에 적재되어 사용자 영역에 적재된 프로그램들에 자원을 할당하고 이들이 올바르게 실행되도록 돕는다.
 
+<Image
+  src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fc80d280-cc54-4d63-bf77-dbff0433c239/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221220%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221220T141332Z&X-Amz-Expires=86400&X-Amz-Signature=3656f14080d4212079ad37a8d3c2d9a15c7d0abed1fe1e57ab7514043b28cd59&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject"
+  size="500"
+/>
+
 :::tip 올바르게 실행 되도록 돕기 위해 무얼 하나?
 
 1. 메모리 자원 관리
@@ -55,18 +60,11 @@ export const Image = ({ src, size }) => {
 
 :::
 
-<Image
-  src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fc80d280-cc54-4d63-bf77-dbff0433c239/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221220%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221220T141332Z&X-Amz-Expires=86400&X-Amz-Signature=3656f14080d4212079ad37a8d3c2d9a15c7d0abed1fe1e57ab7514043b28cd59&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject"
-  size="500"
-/>
-
 :::tip **운영체제를 알아야 하는 이유**
 우리가 만든 프로그램도 결국 하드웨어가 실행하고, 그 하드웨어를 조작하는 프로그램이 운영체제이다. 즉, 우리가 만든 프로그램에 대해 생길 수 있는 문제들을 해결하기 위해 운영체제를 알아야 한다.
 :::
 
-### 2. 운영체제의 큰 그림 `#커널` `#이중 모드` `#시스템 호출`
-
----
+## 운영체제의 큰 그림
 
 - **커널**: 운영체제의 핵심 서비스를 담당하는 부분
   ex) 자원에 접근하고 조작하는 기능, 프로그램이 올바르고 안전하게 실행되게 하는 기능
