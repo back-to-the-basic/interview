@@ -1,0 +1,99 @@
+---
+sidebar_position: 1
+title: 운영체제 시작하기
+description: 운영체제에 대해 알아보자
+tags:
+  - 운영체제
+  - 자원
+  - 시스템 콜
+---
+
+export const Image = ({ src, size }) => {
+  return (
+    <>
+      <img
+        src={src}
+        width={size}
+        height={size}
+        style={{
+          display: "block",
+          margin: "auto",
+        }}
+      />
+      <br />
+    </>
+  );
+};
+
+### 1. 운영체제를 알아야 하는 이유 `#운영체제`
+
+---
+
+- 모든 프로그램은 하드웨어를 필요로 한다.
+- 이때 프로그램 실행에 필요한 요소들을 **시스템 자원**, 줄여서 **자원**이라고 한다.
+
+:::tip 운영체제
+실행할 프로그램에 필요한 자원을 할당하고, 프로그램이 올바르게 실행되도록 돕는 특별한 프로그램
+:::
+
+운영체제는 인터넷 브라우저, 게임과 같은 프로그램이다. 따라서 운영체제 또한 여느 프로그램과 마찬가지로 **메모리에 적재되어야 한다**.
+다만, 운영체제는 항상 컴퓨터가 부팅될 때 메모리 내 **커널 영역**이라는 공간에 따로 적재되어 실행된다.
+
+<Image
+  src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b15571ba-622f-4329-b740-3a2e725dd980/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221220%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221220T140317Z&X-Amz-Expires=86400&X-Amz-Signature=9aa14ae3caa31da775b81c5f7643d96f22e88399011d970e99f8b2bc1b783cac&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject"
+  size="400"
+/>
+
+사용자 영역: 커널 영억을 제외한 나머지 영역, 사용자가 이용하는 응용 프로그램이 적재되는 영역
+즉, 운영체제는 커널 영역에 적재되어 사용자 영역에 적재된 프로그램들에 자원을 할당하고 이들이 올바르게 실행되도록 돕는다.
+
+:::tip 올바르게 실행 되도록 돕기 위해 무얼 하나?
+
+1. 메모리 자원 관리
+2. 공정하게 여러 프로그램에 CPU 자원 할당
+3. 응용프로그램과 하드웨어 사이에서 응용 프로그램에 필요한 자원 할당 및 올바르게 실행되도록 관리
+
+:::
+
+<Image
+  src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fc80d280-cc54-4d63-bf77-dbff0433c239/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221220%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221220T141332Z&X-Amz-Expires=86400&X-Amz-Signature=3656f14080d4212079ad37a8d3c2d9a15c7d0abed1fe1e57ab7514043b28cd59&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject"
+  size="500"
+/>
+
+:::tip **운영체제를 알아야 하는 이유**
+우리가 만든 프로그램도 결국 하드웨어가 실행하고, 그 하드웨어를 조작하는 프로그램이 운영체제이다. 즉, 우리가 만든 프로그램에 대해 생길 수 있는 문제들을 해결하기 위해 운영체제를 알아야 한다.
+:::
+
+### 2. 운영체제의 큰 그림 `#커널` `#이중 모드` `#시스템 호출`
+
+---
+
+- **커널**: 운영체제의 핵심 서비스를 담당하는 부분
+  ex) 자원에 접근하고 조작하는 기능, 프로그램이 올바르고 안전하게 실행되게 하는 기능
+
+:::tip 커널에 포함되지 않는 서비스는 무엇이 있나요?
+
+- 사용자 인터페이스
+- 윈도우의 바탕화면과 같이 사용자가 컴퓨터와 상호작용할 수 있는 통로
+- 해당 종류로 그래픽 유저 인터페이스(GUI), 커맨드 라인 인터페이스(CLI)가 있다.
+
+:::
+
+- **이중 모드**: CPU가 명령어를 실행하는 모드를 크게 사용자 모드와 커널 모드로 구분하는 방식
+- 사용자 모드: 운영체제 서비스를 제공받을 수 없는 실행 모드 → 자원에 접근 불가
+- 커널 모드: 운영체제 서비스를 제공받을 수 있는 실행 모드 → 커널 영역의 코드 실행 가능 → 자원에 접근 가능
+- **시스템 호출**(시스템 콜): 운영체제 서비스를 제공받기 위해 커널 모드로 전환하는 방법
+
+<Image
+  src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/07636f44-2b04-4415-8434-7836a3992f24/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221220%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221220T142122Z&X-Amz-Expires=86400&X-Amz-Signature=d51b868eb23ed11e9d082692d4f6ced9e095395256825496e3888808607c1666&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject"
+  size="500"
+/>
+
+시스템 호출의 작동 예
+
+> 한 응용 프로그램이 하드 디스크에 데이터를 저장하려 한다고 가정
+
+1. 상요자 모드로 실행되는 동안에는 자원(하드 디스크)에 접근이 불가하다.
+2. 응용 프로그램은 하드 디스크에 데이터를 저장하는 시스템 호출을 발생시켜 커널 모드로 전환한다.
+3. 운영체제 내의 `하드 디스크에 데이터를 저장하는 코드`를 실행함으로써 하드 디스크에 접근한다.
+4. 하드 디스크에 접근이 끝나면 사용자 모드로 복귀하여 실행을 계속해 나간다.
