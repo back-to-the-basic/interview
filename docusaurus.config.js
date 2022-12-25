@@ -67,7 +67,7 @@ const config = {
             type: "doc",
             docId: "intro",
             position: "left",
-            label: "Tutorial",
+            label: "Operating Systems",
           },
           // { to: "/blog", label: "Blog", position: "left" },
           {
