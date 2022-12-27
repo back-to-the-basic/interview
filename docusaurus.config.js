@@ -71,6 +71,18 @@ const config = {
           },
           // { to: "/blog", label: "Blog", position: "left" },
           {
+            type: "doc",
+            docId: "intro",
+            position: "left",
+            label: "네트워크",
+          },
+          {
+            type: "doc",
+            docId: "intro",
+            position: "left",
+            label: "WEB",
+          },
+          {
             href: "https://github.com/back-to-the-basic/interview",
             label: "GitHub",
             position: "right",
