@@ -65,22 +65,22 @@ const config = {
         items: [
           {
             type: "doc",
-            docId: "intro",
+            docId: "os/개념/1",
             position: "left",
-            label: "Operating Systems",
+            label: "운영체제",
           },
           // { to: "/blog", label: "Blog", position: "left" },
           {
             type: "doc",
-            docId: "intro",
+            docId: "computer-structure/개념/1",
             position: "left",
-            label: "네트워크",
+            label: "컴퓨터구조",
           },
           {
             type: "doc",
-            docId: "intro",
+            docId: "react/Flux",
             position: "left",
-            label: "WEB",
+            label: "React",
           },
           {
             href: "https://github.com/back-to-the-basic/interview",
