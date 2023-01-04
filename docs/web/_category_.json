@@ -1,6 +1,6 @@
 {
-  "label": "web",
-  "position": 2,
+  "label": "Web",
+  "position": 5,
   "link": {
     "type": "generated-index",
     "description": "interview question about web"
