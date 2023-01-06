@@ -7,10 +7,10 @@
 
 ## 컴퓨터 구조
 
-## JavaScript
-
 ## 네트워크
 
-## React
-
 ## Web
+
+## JavaScript
+
+## React
