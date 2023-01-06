@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
 
-const Image = ({ src, size, referenceLink }) => {
+const Image = ({ src, size, referenceLink, description }) => {
   return (
-    <div style={{ padding: 'auto', margin: 'auto' }}>
+    <div>
       <img
         src={src}
         width={size}
@@ -25,7 +25,7 @@ const Image = ({ src, size, referenceLink }) => {
             textAlign: 'center',
           }}
         >
-          그림 출처
+          {description ? description : '그림 출처'}
         </Link>
       )}
     </div>

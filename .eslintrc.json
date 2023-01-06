@@ -4,9 +4,10 @@
     "es2021": true
   },
   "parserOptions": {
-    "ecmaVersion": 13,
+    "ecmaVersion": 2020,
     "sourceType": "module"
   },
+  "parser": "@babel/eslint-parser",
   "rules": {},
 
   "extends": ["plugin:mdx/recommended"]
