@@ -1,53 +1,49 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require("prism-react-renderer/themes/github")
-const darkCodeTheme = require("prism-react-renderer/themes/dracula")
+const lightCodeTheme = require('prism-react-renderer/themes/github');
+const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Interview",
-  tagline: "Dinosaurs are cool",
-  url: "https://your-docusaurus-test-site.com",
-  baseUrl: "/",
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
+  title: 'Interview',
+  tagline: 'Dinosaurs are cool',
+  url: 'https://your-docusaurus-test-site.com',
+  baseUrl: '/',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
+  favicon: 'img/favicon.ico',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "back-to-the-basic", // Usually your GitHub org/user name.
-  projectName: "interview", // Usually your repo name.
+  organizationName: 'back-to-the-basic', // Usually your GitHub org/user name.
+  projectName: 'interview', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: "ko",
-    locales: ["ko"],
+    defaultLocale: 'ko',
+    locales: ['ko'],
+  },
+
+  themeConfig: {
+    algolia: {
+      contextualSearch: true,
+    },
   },
 
   presets: [
     [
-      "classic",
+      'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //   "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
-        },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //   "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          sidebarPath: require.resolve('./sidebars.js'),
+          editUrl: 'https://github.com/back-to-the-basic/interview',
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: require.resolve('./src/css/custom.css'),
         },
       }),
     ],
@@ -57,35 +53,34 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: "Interview",
+        title: 'Interview',
         logo: {
-          alt: "My Site Logo",
-          src: "img/logo.svg",
+          alt: 'My Site Logo',
+          src: 'img/logo.svg',
         },
         items: [
           {
-            type: "doc",
-            docId: "os/개념/1",
-            position: "left",
-            label: "운영체제",
-          },
-          // { to: "/blog", label: "Blog", position: "left" },
-          {
-            type: "doc",
-            docId: "computer-structure/개념/1",
-            position: "left",
-            label: "컴퓨터구조",
+            type: 'doc',
+            docId: 'os/개념/1',
+            position: 'left',
+            label: '운영체제',
           },
           {
-            type: "doc",
-            docId: "react/Flux",
-            position: "left",
-            label: "React",
+            type: 'doc',
+            docId: 'computer-structure/개념/1',
+            position: 'left',
+            label: '컴퓨터구조',
           },
           {
-            href: "https://github.com/back-to-the-basic/interview",
-            label: "GitHub",
-            position: "right",
+            type: 'doc',
+            docId: 'react/Flux',
+            position: 'left',
+            label: 'React',
+          },
+          {
+            href: 'https://github.com/back-to-the-basic/interview',
+            label: 'GitHub',
+            position: 'right',
           },
         ],
       },
@@ -139,6 +134,6 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
-}
+};
 
-module.exports = config
+module.exports = config;
