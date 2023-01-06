@@ -1,14 +1,14 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
 
-const Image = ({ src, size, referenceLink, description }) => {
+const Image = ({ src, width, height, referenceLink, description }) => {
   return (
     <div>
       <img
         src={src}
-        width={size}
-        height={size}
         style={{
+          width,
+          height,
           display: 'block',
           margin: 'auto',
         }}
