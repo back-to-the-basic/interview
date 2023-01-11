@@ -1,14 +1,6 @@
 {
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
-  "parserOptions": {
-    "ecmaVersion": 2020,
-    "sourceType": "module"
-  },
   "parser": "@babel/eslint-parser",
   "rules": {},
-
-  "extends": ["plugin:mdx/recommended"]
+  "plugins": ["@docusaurus"],
+  "extends": ["plugin:mdx/recommended", "plugin:@docusaurus/recommended"]
 }
