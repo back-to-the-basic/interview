@@ -74,6 +74,12 @@ const config = {
             label: 'JavaScript',
           },
           {
+            type: 'doc',
+            docId: 'network/google.com',
+            position: 'left',
+            label: 'Network',
+          },
+          {
             href: 'https://github.com/back-to-the-basic/interview',
             label: 'GitHub',
             position: 'right',
