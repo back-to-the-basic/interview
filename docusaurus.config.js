@@ -68,6 +68,12 @@ const config = {
             label: 'React',
           },
           {
+            type: 'doc',
+            docId: 'javascript/1',
+            position: 'left',
+            label: 'JavaScript',
+          },
+          {
             href: 'https://github.com/back-to-the-basic/interview',
             label: 'GitHub',
             position: 'right',
