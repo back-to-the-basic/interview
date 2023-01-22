@@ -2,11 +2,118 @@
 title: 주소창에 google.com을 치면 일어나는 일
 ---
 
-사용자가 웹 브라우저를 통해 google.com을 입력하면 URL 주소 중 도메인 네임 부분을 DNS 서버에서
-검색한다. DNS 서버에서 해당 도메인 네임에 해당하는 IP 주소를 찾아 사용자가 입력한 URL 정보와 함께
-전달한다. 브라우저는 HTTP 프로토콜을 사용하여 요청 메시지를 생성하고 HTTP 요청 메시지는
-TCP/IP 프로토콜을 사용하여 서버로 전송된다. 서버는 response 메시지를 생성하여 다시
-브라우저에게 데이터를 전송한다. 브라우저는 response를 받아 파싱하여 화면에 렌더링한다.
+import Image from '@site/src/components/Image';
+
+## 개요
+
+google.com을 주소창에 입력하면 일아나는 일은 크게 세가지로 구분할 수 있다.
+
+여기 사진
+
+## Handling Inputs
+
+<Image
+  src="https://user-images.githubusercontent.com/63354527/213903955-4d1bb636-82d4-48d4-9e7c-45bdb87ce34e.png"
+  referenceLink="https://developer.chrome.com/blog/inside-browser-part2/"
+  description="UI Thread asking if the input is search query or a URL"
+  width="500px"
+/>
+
+<br />
+
+사용자가 주소창에 텍스트를 입력하면 브라우저 프로세스 안에 UI 스레드가 텍스트가 search query인지
+URL인지를 판단한다.
+
+- search query: 검색 엔진에게 전달
+- URL: network thread로 URL 값 전달 준비
+
+## Start Navigation
+
+유저가 엔터를 입력하면 UI 스레드가 컨텐츠를 가져오기 위한 네트워크 요청을 시작한다.(Network thread
+에게 URL 전달)
+
+<Image
+  src="https://user-images.githubusercontent.com/63354527/213905084-f693d312-f16c-4af3-8578-2c11e773574e.png"
+  referenceLink="https://developer.chrome.com/blog/inside-browser-part2/"
+  description="the UI thread talking to the network thread to navigate to mysite.com"
+  width="500px"
+/>
+
+<br />
+
+위 그림과 같이 로딩 스피너가 나타나고, 네트워크 스레드가 DNS lookup과 같은 적절한 프로토콜을 사용하여
+요청에 대하여 TLS(Transfort Layer Security) connection을 만든다. 만약 네트워크 스레드로
+HTTP 301 response가 오면 UI 스레드와 상호작용하여 새로운 URL로 redirect한다.
+
+## Read response
+
+<Image
+  src="https://user-images.githubusercontent.com/63354527/213907089-39553de9-a63c-4c32-bdfc-e934ef1a48d9.png"
+  referenceLink="https://user-images.githubusercontent.com/63354527/213907089-39553de9-a63c-4c32-bdfc-e934ef1a48d9.png"
+  description="response header which contains Content-Type and payload which is the actual data"
+  width="500px"
+/>
+
+<br />
+
+응답 body가 들어오면 필요할 경우에 네트워크 스레드는 몇몇 바이트를 읽는다. 응답의 Content-Type 헤더는
+데이터 유형을 알려줘야하지만 누락되거나 잘못되었을 수 있으므로 MIME Type 확인이 여기서 이루어진다.
+
+만약 응답이 HTML 파일이라면, 렌더러 프로세스에게 전달하고 zip 파일 또는 다른 타입의 파일이라면 다운로드
+매니저에게 전달한다.
+
+<Image
+  src="https://user-images.githubusercontent.com/63354527/213907366-9b132374-71e6-41c9-a24b-7053553ba753.png"
+  referenceLink="https://user-images.githubusercontent.com/63354527/213907366-9b132374-71e6-41c9-a24b-7053553ba753.png"
+  description="Network thread asking if response data is HTML from a safe site"
+  width="500px"
+/>
+
+<br />
+
+이 과정에서 SafeBrowsing이 일어난다. 만약 도메인과 응답 데이터가 악의적인 사이트라고 의심되는 경우에는
+네트워크 스레드는 경고창을 띄운다. 추가적으로 민감한 cross-site 데이터를 차단하기위한
+Cross Origin Read Blocking(CORB) 체크도 이루어진다.
+
+## Find a renderer processor
+
+<Image
+  src="https://user-images.githubusercontent.com/63354527/213907613-bc977491-ecab-4385-ab98-858da31deb20.png"
+  description="Network thread telling UI thread to find Renderer Process"
+  referenceLink="https://user-images.githubusercontent.com/63354527/213907613-bc977491-ecab-4385-ab98-858da31deb20.png"
+  width="500px"
+/>
+
+<br />
+
+체크가 모두 끝나면 네트워크 스레드는 UI 스레드에게 데이터가 준비되었다고 알린다. UI 스레드는
+렌더링을 수행할 렌더러 프로세스를 찾는다. 네트워크 요청이 응답을 받는데 수백 밀리초가 걸릴 수 있으므로
+이 프로세스 속도를 높이기 위한 최적화가 적용된다. 2단계에서 UI 스레드가 네트워크 스레드에 URL 요청을
+보낼 때 탐색할 사이트를 이미 알고 있다. UI 스레드는 네트워크 요청과 병렬로 렌더러 프로세스를 사전에
+찾거나 시작하려고 시도한다. 이렇게 하면 모든 것이 예상대로 진행되고 렌더러 프로세스는 네트워크 스레드가
+데이터를 수신했을 때 이미 대기 위치에 있다. 탐색이 cross-site로 리다이렉션되는 경우 이 대기 프로세스가
+사용되지 않을 수 있으며, 이 경우 다른 프로세스가 필요할 수 있다.
+
+## Commit Navigation
+
+데이터와 렌더러 프로세스가 준비되면 IPC를 통해 브라우저 프로세스에서 렌더러 프로세스로 데이터를 전달한다.
+렌더러 프로세스는 HTML 데이터를 받게되고 네비게이션은 끝나고 문서의 로딩이 이루어진다.
+
+<Image
+  src="https://user-images.githubusercontent.com/63354527/213908320-16a7992f-6cf1-44b4-863d-9427a50a5a91.png"
+  description="IPC between browser process and renderer process, requesting to render the page"
+  referenceLink="https://user-images.githubusercontent.com/63354527/213908320-16a7992f-6cf1-44b4-863d-9427a50a5a91.png"
+  width="500px"
+/>
+
+<br />
+
+사용자가 웹 브라우저를 통해 google.com을 입력하면 URL 주소 중 도메인 네임 부분을
+DNS 서버에서 검색한다. DNS 서버에서 해당 도메인 네임에 해당하는 IP 주소를 찾아 사용자가
+입력한 URL 정보와 함께 전달한다. 브라우저는 HTTP 프로토콜을 사용하여 요청 메시지를
+생성하고 HTTP 요청 메시지는 TCP/IP 프로토콜을 사용하여 서버로 전송된다. 서버는 response
+메시지를 생성하여 다시 브라우저에게 데이터를 전송한다. 브라우저는 response를 받아
+파싱하여 화면에 렌더링한다.
 
 브라우저가 URL에 적힌 값을 파싱해서 HTTP Request Message를 만들고, OS에 전송을 요청한다. 이 때,
 Domain으로 요청을 보낼 수 없기 때문에 DNS Lookup을 수행한다.
@@ -29,3 +136,4 @@ ip를 찾는다.
 ## Reference
 
 - TCP/IP 쉽게, 더 쉽게
+- [Inside look at modern web browser](https://developer.chrome.com/blog/inside-browser-part2/)
