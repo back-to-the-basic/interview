@@ -25,7 +25,7 @@ const Image = ({ src, width, height, referenceLink, description }) => {
             textAlign: 'center',
           }}
         >
-          {description ? description : '그림 출처'}
+          {description}
         </Link>
       )}
     </div>
