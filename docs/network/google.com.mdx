@@ -27,6 +27,8 @@ URL인지를 판단한다.
 - search query: 검색 엔진에게 전달
 - URL: network thread로 URL 값 전달 준비
 
+만약 검색어를 입력했다면 사용자가 선택한 검색 엔진의 URL과 조합하여 새로운 URL 형태로 변환하게 된다.
+
 ## Start Navigation
 
 유저가 엔터를 입력하면 UI 스레드가 컨텐츠를 가져오기 위한 네트워크 요청을 시작한다.(Network thread
@@ -45,6 +47,10 @@ URL인지를 판단한다.
 요청에 대하여 TLS(Transfort Layer Security) connection을 만든다. 만약 네트워크 스레드로
 HTTP 301 response가 오면 UI 스레드와 상호작용하여 새로운 URL로 redirect한다.
 
+:::info
+`nslookup google.com`을 입력하면 구글의 IP 주소를 얻어올 수 있고 이 주소를 입력해도 똑같은 구글 창이 뜬다.
+:::
+
 ## Read response
 
 <Image
@@ -59,8 +65,10 @@ HTTP 301 response가 오면 UI 스레드와 상호작용하여 새로운 URL로 
 응답 body가 들어오면 필요할 경우에 네트워크 스레드는 몇몇 바이트를 읽는다. 응답의 Content-Type 헤더는
 데이터 유형을 알려줘야하지만 누락되거나 잘못되었을 수 있으므로 MIME Type 확인이 여기서 이루어진다.
 
-만약 응답이 HTML 파일이라면, 렌더러 프로세스에게 전달하고 zip 파일 또는 다른 타입의 파일이라면 다운로드
-매니저에게 전달한다.
+- header의 Content-Type과 실제 응답받은 데이터 형식이 다를 수 있기에 [MIME 스니핑](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)을 실행하여 데이터의
+  실제 형식을 알아낸다.
+- 응답이 HTML 파일이라면, 렌더러 프로세스에게 전달하고, 렌더러 프로세스가 다룰 수 없는 데이터 형식(zip파일 또는 다른 타입의 파일)
+  이라면 다운로드 매니저에게 데이터를 전달한다.
 
 <Image
   src="https://user-images.githubusercontent.com/63354527/213907366-9b132374-71e6-41c9-a24b-7053553ba753.png"
@@ -71,9 +79,9 @@ HTTP 301 response가 오면 UI 스레드와 상호작용하여 새로운 URL로 
 
 <br />
 
-이 과정에서 SafeBrowsing이 일어난다. 만약 도메인과 응답 데이터가 악의적인 사이트라고 의심되는 경우에는
+이 과정에서 [SafeBrowsing](https://safebrowsing.google.com/)이 일어난다. 만약 도메인과 응답 데이터가 악의적인 사이트라고 의심되는 경우에는
 네트워크 스레드는 경고창을 띄운다. 추가적으로 민감한 cross-site 데이터를 차단하기위한
-Cross Origin Read Blocking(CORB) 체크도 이루어진다.
+[Cross Origin Read Blocking(CORB)](https://www.chromium.org/Home/chromium-security/corb-for-developers/) 체크도 이루어진다.
 
 ## Find a renderer processor
 
