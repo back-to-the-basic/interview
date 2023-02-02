@@ -116,6 +116,16 @@ HTTP 301 response가 오면 UI 스레드와 상호작용하여 새로운 URL로 
 
 <br />
 
+렌더러 프로세스가 HTML 데이터를 계속 수신할 수 있도록 브라우저 프로세스는 데이터 스트림을
+전달합니다. 렌더러 프로세스에서 내비게이션이 실행되었다는 것을 브라우저 프로세스가 확인하고
+나면 내비게이션이 완료되고 문서 로딩 단계가 시작됩니다.
+
+<Image
+  src="https://user-images.githubusercontent.com/63354527/216108595-da7c2b9b-38f3-45d4-89e3-5dd822e18458.png"
+  referenceLink="https://www.slideshare.net/deview/125-119068291"
+  description="Critical Rendering Path"
+/>
+
 사용자가 웹 브라우저를 통해 google.com을 입력하면 URL 주소 중 도메인 네임 부분을
 DNS 서버에서 검색한다. DNS 서버에서 해당 도메인 네임에 해당하는 IP 주소를 찾아 사용자가
 입력한 URL 정보와 함께 전달한다. 브라우저는 HTTP 프로토콜을 사용하여 요청 메시지를
