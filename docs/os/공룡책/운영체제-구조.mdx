@@ -650,7 +650,6 @@ Apple의 macOS 운영체제는 주로 데스크톱 및 랩톱 컴퓨터 시스�
   src="https://user-images.githubusercontent.com/63354527/216864644-90822f58-d014-4e70-88af-a7c39f8c750c.png"
   referenceLink="https://user-images.githubusercontent.com/63354527/216864644-90822f58-d014-4e70-88af-a7c39f8c750c.png"
   description="Apple의 macOS와 iOS 운영체제의 구조"
-  {/* width="500px" */}
 />
 
 - 사용자 경험 층: 이 층은 사용자가 컴퓨팅 장치와 상호 작용할 수 있는 소프트웨어 인터페이스를 정의한다.
@@ -681,6 +680,7 @@ Darwin은 주로 Mach 마이크로커널과 BSD UNIX 커널로 구성된 계층�
   src="https://user-images.githubusercontent.com/63354527/216866883-594f7a1f-0e34-4a06-9fa5-af675cf2343d.png"
   referenceLink="https://user-images.githubusercontent.com/63354527/216866883-594f7a1f-0e34-4a06-9fa5-af675cf2343d.png"
   description="Darwin의 구조"
+  width="300px"
 />
 
 운영체제 대부분은 UNIX 및 Linux 시스템에서 표준 C 라이브러리를 통하는 것처럼 커널에 대해 하나의 시스템 콜
@@ -696,3 +696,51 @@ Mach는 커널 내에서 프로세스를 나타내기 위하여 태스크 커널
 
 Mach 및 BSD 외에도 커널 환경은 장치 드라이버 및 동적 적재가능 모듈(macOS는 커널 확장 또는 kext라고 함) 개발을
 위한 I/O 키트를 사용한다.
+
+## 운영체제 빌딩과 부팅
+
+하나의 특정 기기 구성에 맞게 운영체제를 설계, 코딩할 수 있다. 그러나 보다 일반적으로
+운영체제는 다양한 주변장치 구성을 가진 모든 종류의 컴퓨터에서 실행되도록 설계된다.
+
+:::info
+
+**Linux를 위한 Windows 서브 시스템**
+
+Windows는 다른 운영체제 환경을 에뮬레이트 하기 위해 서브시스템을 제공하는 하이브리드 구조를
+사용한다. 이러한 사용자 모드 서브시스템은 실제 서비스를 제공하기 위해 Windows 커널과
+통신한다. Winodws 10에는 Linux 용 Windows 서브시스템(WSL)이 추가되어 네이티브
+Linux 응용 프로그램(ELF 바이너리 형식)을 Windows 10에서 실행할 수 있다. 통상 사용자가
+Windows 응용 프로그램 bash.exe를 시작하고 Linux를 실행하는 bash 셸을 사용자에게 제시한다.
+내부적으로 WSL은 init 프로세스로 구성된 Linux 인스턴스를 생성하고 네이티브 Linux 응용
+프로그램 /bin/bash를 실행하는 bash 셸 프로세스를 생성한다. 이러한 각 프로세스는 Winodows
+Pico 프로세스에서 실행된다. 이 특별한 프로세스는 네이티브 Linux 바이너리를 프로세스의 자체
+주소 공간에 적재하여 Linux 응용 프로그램을 실행할 수 있는 환경을 제공한다.
+
+<Image
+  src="https://user-images.githubusercontent.com/63354527/217119339-e29caa43-9cba-459b-9aaf-bfead5d646e9.png"
+  referenceLink="https://user-images.githubusercontent.com/63354527/217119339-e29caa43-9cba-459b-9aaf-bfead5d646e9.png"
+  width="500px"
+/>
+
+Pico 프로세스는 커널 서비스 LXCore 및 LXSS와 통신하여 가능한 한 Linux 시스템 콜을
+네이티브 Windows 시스템 콜로 변환한다. Linux 응용 프로그램이 상응하는 Winodws 시스템과
+콜로 변환한다. Linux 응용 프로그램이 상응하는 Windows 시스템 콜이 없는 요청을 한다면
+LXSS 서비스는 동등한 기능을 제공해야 한다. Linux와 Windows 시스템 콜 간에 일대일 관계가
+있는 경우 LXSS는 Linux 시스템 콜을 Windows 커널의 동등한 시스템 콜로 직접 전달한다.
+상황에 따라 Linux와 Windows의 시스템 콜은 비슷하지만 동일하지는 않다. 이 경우 LXSS는
+일부 기능을 제공하고 나머지 기능을 제공하기 위해 유사한 Windows의 시스템 콜을 호출한다.
+Linux의 fork()는 이러한 사례를 보여준다. Windows의 createProcess() 시스템 콜은
+fork()와 유사하지만 완전히 똑같은 기능을 제공하지는 않는다. WSL에 fork()가 호출되면
+LXSS 서비스는 fork()의 초기 작업 중 일부를 수행한 다음 CreateProcess()를 호출하여
+나머지 작업을 수행한다.
+:::
+
+### 운영체제 생성
+
+운영체제를 처음부터 생성(또는 빌딩)하는 경우 다음 절차를 밟아야 한다.
+
+1. 운영체제 소스 코드를 작성한다(또는 이전에 작성된 소스코도를 확보한다).
+2. 운영체제가 실행될 시스템의 운영체제를 구성한다.
+3. 운영체제를 컴파일한다.
+4. 운영체제를 설치한다.
+5. 컴퓨터와 새 운영체제를 부팅한다.
