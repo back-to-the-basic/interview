@@ -80,6 +80,12 @@ const config = {
             label: 'Network',
           },
           {
+            type: 'doc',
+            docId: 'web/쿠키와세션',
+            position: 'left',
+            label: 'WEB',
+          },
+          {
             href: 'https://github.com/back-to-the-basic/interview',
             label: 'GitHub',
             position: 'right',
