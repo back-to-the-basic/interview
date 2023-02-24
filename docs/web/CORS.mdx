@@ -1,0 +1,55 @@
+---
+sidebar_position: 2
+title: CORS
+description: CSR, SSR, SSG에 대해 알아보자
+---
+
+import Image from '@site/src/components/Image';
+
+# CORS란 무엇인가
+
+교차 출처 리소스 공유(Cross-Origin Resource Sharing, CORS)는
+추가 HTTP 헤더를 사용하여, 한 출처에서 실행 중인 웹 애플리케이션이 다른
+출처의 선택한 자원에 접근할 수 있는 권한을 부여하도록 브라우저에 알려주는
+체제이다. 웹 애플리케이션은 리소스가 자신의 출처(도메인, 프로토콜, 포트)와
+다를 때 교차 출처 HTTP 요청을 실행한다.
+
+> 교차 출처 요청의 예시:
+> https://domain-a.com의 프론트엔드 JavaScript 코드가
+> XMLHttpRequest를 사용하여 https://domain-b.com/data.json을
+> 요청하는 경우.
+
+보안 상의 이유로, 브라우저는 스크립트에서 시작한 교차 출처 HTTP 요청을 제한한다.
+예를 들어, XMLHttpRequest와 Fetch API는 동일 출처 정책을 따른다. 즉,
+이 API를 사용하는 웹 애플리케이션은 자신의 출처와 동일한 리소스만 불러올 수
+있으며, 다른 출처의 리소스를 불러오려면 그 출처에서 올바른 CORS 헤더를 포함한
+응답을 반환해야 한다.
+
+<Image
+  src="https://user-images.githubusercontent.com/63354527/221099739-0b88943d-44db-4a0a-a967-4b606c8b00ac.png"
+  referenceLink="https://user-images.githubusercontent.com/63354527/221099739-0b88943d-44db-4a0a-a967-4b606c8b00ac.png"
+/>
+
+CORS 체제는 브라우저와 서버 간의 안전한 교차 출처 요청 및 데이터 전송을 지원한다.
+최신 브라우저는 XMLHttpRequest 또는 Fetch와 같은 API에서 CORS를 사용하여
+교차 출처 HTTP 요청의 위험을 완화합니다.
+
+최신 브라우저는 헤더와 정책 집행을 포함한 클라이언트 측 교차 출처 공유를 처리합니다.
+그러나 CORS 표준에 맞춘다는 것은 서버에서도 새로운 요청과 응답 헤더를 처리해야
+한다는 것입니다.
+
+교차 출처 리소스 공유 표준은 웹 브라우저에서 해당 정보를 읽는 것이 허용된 출처를
+서버에서 설명할 수 있는 새로운 HTTP 헤더를 추가함으로써 동작한다. 추가적으로,
+서버 데이터에 부수 효과(side effect)를 일으킬 수 있는 HTTP 요청 메서드(GET을 제외한 HTTP 메서드)에
+대해, CORS 명세는 브라우저가 요청을 OPTIONS 메서드로 preflight하여 지원하는
+메서드를 요청하고, 서버의 "허가"가 떨어지면 실제 요청을 보내도록 요구하고 있습니다.
+또한 서버는 클라이언트에게 요청에 "인증정보"(쿠키, HTTP 인증)를 함께 보내야
+한다고 알려줄 수도 있습니다.
+
+CORS 실패는 오류의 원인이지만, 보안상의 이유로 JavaScript에서는 오류의 상세
+정보에 접근할 수 없으며, 알 수 있는 것은 오류가 발생했다는 사실 뿐입니다. 정확히
+어떤 것이 실패했는지 알아내려면 브라우저의 콘솔을 봐야 합니다.
+
+이후 항목에서는 시나리오와 함께, 사용한 HTTP 헤더의 상세 내용을 다룹니다.
+
+## 접근 제어 시나리오 예제
