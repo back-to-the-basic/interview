@@ -1,14 +1,23 @@
 ---
 title: 주소창에 google.com을 치면 일어나는 일
+sidebar_position: 1
 ---
 
 import Image from '@site/src/components/Image';
 
+구글 웹 서버의 80 포트로 HTTP Request를 보내는 것이다. 요청을 해당 웹 서버로 전달하기 위해 패킷을 만들어야 한다.
+패킷에는 TCP/IP 4계층에서 각 계층에 필요한 정보들이 담겨야 한다.
+
+Application Layer에서는 HTTP 프로토콜, Transport Layer에서는 TCP, Internet Layer에서는 IP, Network Access Layer에서는 Ethernet 프로토콜을 사용한다.
+
+DNS 서버 주소는 컴퓨터에 저장되어 있다.
+DNS도 Application Layer의 프로토콜이다. (53번 포트를 사용)
+
+Domain이 담긴 Query를 DNS 서버에 보내면 DNS 서버는 해당 Domain의 IP 주소를 반환한다.
+
 ## 개요
 
 google.com을 주소창에 입력하면 일아나는 일은 크게 세가지로 구분할 수 있다.
-
-여기 사진
 
 ## Handling Inputs
 
