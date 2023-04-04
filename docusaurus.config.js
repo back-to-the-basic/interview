@@ -57,6 +57,12 @@ const config = {
           },
           {
             type: 'doc',
+            docId: 'network/google.com',
+            position: 'left',
+            label: 'Network',
+          },
+          {
+            type: 'doc',
             docId: 'computer-structure/개념/1',
             position: 'left',
             label: '컴퓨터구조',
@@ -72,12 +78,6 @@ const config = {
             docId: 'javascript/1',
             position: 'left',
             label: 'JavaScript',
-          },
-          {
-            type: 'doc',
-            docId: 'network/google.com',
-            position: 'left',
-            label: 'Network',
           },
           {
             type: 'doc',
