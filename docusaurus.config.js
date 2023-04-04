@@ -51,7 +51,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'os/개념/1',
+            docId: 'operating-system/개념/1',
             position: 'left',
             label: '운영체제',
           },
