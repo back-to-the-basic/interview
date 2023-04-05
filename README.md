@@ -9,17 +9,17 @@
 - [프로세스와 스레드에 대해서 설명해주세요.]()
 - 세마포어와 뮤텍스
 - Deadlock, 교착상태에 대해서 설명해주세요.
--
+- 동기와 비동기의 차이에 대해서 설명해주세요.
 
 ## 네트워크
 
 - [google.com을 검색했을 때 일어나는 일]()
 - [TCP/IP란?]()
-- [TCP의 3, 4 Way Handshaking에 대해서 설명해보세요.](https://bttb-interview.vercel.app/docs/network/3,4%20Way%20Handshaking)
-- [TCP와 UDP의 차이점에 대해서 설명해보세요.]()
-- [HTTP와 HTTPS의 차이점에 대해서 설명해보세요.]()
-- [GET과 POST의 차이점에 대해서 설명해보세요.]()
-- [RESTful이란 무엇이며, 이것에 대해서 아는대로 설명해보세요.]()
+- [TCP의 3, 4 Way Handshaking에 대해서 설명해주세요.](https://bttb-interview.vercel.app/docs/network/3,4%20Way%20Handshaking)
+- [TCP와 UDP의 차이점에 대해서 설명해주세요.]()
+- [HTTP와 HTTPS의 차이점에 대해서 설명해주세요.]()
+- [GET과 POST의 차이점에 대해서 설명해주세요.]()
+- [RESTful이란 무엇이며, 이것에 대해서 아는대로 설명해주세요.]()
 
 ## 컴퓨터 구조
 
