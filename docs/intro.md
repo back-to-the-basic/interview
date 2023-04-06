@@ -4,9 +4,16 @@ sidebar_position: 1
 
 # Interview
 
-안녕하세요.
+면접 준비를 위해 정리한 문서입니다.
 
-## Contributors
+## 운영체제
 
-- [이하령](https://github.com/haryung-lee)
-- [이현진](https://github.com/hyunjinee)
+## 네트워크
+
+## 컴퓨터 구조
+
+## Web
+
+## JavaScript
+
+## React
