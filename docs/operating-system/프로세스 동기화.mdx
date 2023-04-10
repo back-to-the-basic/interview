@@ -4,10 +4,17 @@ title: 프로세스 동기화
 
 import Image from '@site/src/components/Image';
 
-프로세스 동기화(Process Synchronization)은 여러 프로세스가 공유하는 자원의 일관성을 유지하는 것이다.
+프로세스 동기화(Process Synchronization)은 여러 프로세스가 공유하는 자원의 일관성을
+유지하는 것이다.
 
-여러 프로세스가 서로 협력해 공유자원을 사용하는 상황에서 경쟁 조건(race condition)이 발생하면 공유자원의
-신뢰성이 떨어진다. 이를 방지하기 위해 프로세스들이 공유자원을 사용할 때 특별한 규칙을 만드는 것
+여러 프로세스가 서로 협력해 공유자원을 사용하는 상황에서 경쟁 조건(race condition)이 발생하면
+공유자원의 신뢰성이 떨어진다. 이를 방지하기 위해 프로세스들이 공유자원을 사용할 때 특별한 규칙을
+만드는 것
+
+## Critical Section
+
+Critical Section(임계 구역)은 코드 상에서 Race Condition이 발생할 수 있는 특정 부분을
+말한다. 공유 데이터를 접근하는 코드 부분을 말한다.
 
 ## Race condition
 
