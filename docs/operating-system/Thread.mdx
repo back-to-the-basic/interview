@@ -114,8 +114,57 @@ Context Switching와는 달리 캐시 메모리를 비울 필요가 없기 때�
 스레드 안전을 보장하기 위해서는 스레드 간의 동기화가 필요하다. 더 정확히는 공유 자원에 접근하는 임계영역을 동기화 기법으로
 제어해줘야 한다.(상호 배제)
 
+## User Thread
+
+<Image
+  src="https://user-images.githubusercontent.com/63354527/231326491-8c9c67fd-7248-4aba-a870-d3f6a3d025e0.png"
+  width="800px"
+/>
+
+- 유저 영역의 라이브러리로 구현된 스레드
+- 커널은 프로세스 내 유저 스레드를 알지 못한다.
+- 커널은 프로세스 단위로 자원을 할당하기 때문에, 스레드 Block => 프로세스 Block => 프로세스 내 다른 스레드도 Block
+
+## Kernel Thread
+
+- 운영체제가 직접 관리하는 스레드
+- 논리적 코어와 매핑되는, 시스템의 실제 스레드
+- 커널 영역에서 스레드의 생성, 관리 수행
+- 커널이 각 스레드를 개별적으로 관리
+  - 프로세스 내 스레드들이 병렬 수행 가능
+  - 하나의 스레드가 Block 되어도 다른 스레드는 계속 작업 가능
+
+## Multi Threading Model
+
+<Image
+  src="https://user-images.githubusercontent.com/63354527/231326735-04b9a23a-b935-43dd-a424-1b430c8f5a38.png"
+  width="300px"
+/>
+
+- 다대일 모델: User Thread 여러 개가 하나의 Kernel Thread에 매핑된다. 스레드 관리가 유저 영역의 라이브러리에
+  의해 수행되므로 효율적이지만, 한 User Thread가 Block되면 Kernel Thread 자체가 Block된다. 또한, 한번에
+  하나의 User Thread만 Kernel에 엑세스 할 수 있으므로 여러 스레드로 병렬 실행할 수 없다.
+
+<Image
+  src="https://user-images.githubusercontent.com/63354527/231327165-c761070c-ac92-46fa-a6cf-a13646cdb88e.png"
+  width="400px"
+/>
+
+- 일대일 모델: User Thread 하나당 Kernel Thread 하나씩 매핑된다. 프로세스 내 스레드가 병렬 실행이 가능하다는
+  장점이 있고, 다대일 모델의 많은 문제가 해결되지만, 큰 overhead가 발생할 수 있다.
+
+<Image
+  src="https://user-images.githubusercontent.com/63354527/231327521-f696afe8-d838-419d-b460-1a080b1ec9d1.png"
+  width="500px"
+/>
+
+- 다대다 모델: User Thread를 동일한 수, 혹은 그 이하의 Kernel Thread에 매핑하여, 이전 두 모델의 단점을 극복.
+  User Thread가 Block되어 연결된 Kernel Thread가 Block되어도 다른 User Thread를 다른 Kernel Thread로 매핑하여
+  대기 상태에 빠지는 것을 해결할 수 있다.
+
 ## Reference
 
 - [프로세스와 스레드에 대한 정리](https://magi82.github.io/process-thread/)
 - [멀티 스레드](https://github.com/JaeYeopHan/Interview_Question_for_Beginner/tree/master/OS#%EB%A9%80%ED%8B%B0-%EC%8A%A4%EB%A0%88%EB%93%9C)
 - [스레드 안전](https://choo.oopy.io/d2c9c878-2c48-4729-a433-ecff53fa79d8)
+- [Kernel Thread, User Thread](https://nostressdev.tistory.com/19)
