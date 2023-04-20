@@ -13,9 +13,7 @@ const Image = ({ src, width, height, referenceLink, description }) => {
           margin: 'auto',
         }}
       />
-      {/* <br /> */}
-
-      {referenceLink && (
+      {description && (
         <Link
           to={referenceLink}
           style={{
