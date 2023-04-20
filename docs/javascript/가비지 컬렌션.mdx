@@ -1,3 +1,5 @@
+import Image from '@site/src/components/Image';
+
 # 가비지 컬렉션
 
 자바스크립트는 도달 가능성(reachability)이라는 개념을 사용해 메모리 관리를 수행한다.
@@ -20,6 +22,35 @@
 
 자바스크립트 엔진 내에서는 **가비지 컬렉터**가 끊임없이 동작한다. 가비지 컬렉터는 모든
 객체를 모니터링하고, 도달할 수 없는 객체는 삭제한다.
+
+## 메모리 구조(V8 엔진)
+
+프로그램을 실행하면 메모리의 Resident Set이라는 빈 공간이 할당됩니다. Resident Set은
+스택 영역과 힙 영역으로 나눌 수 있다. 자바스크립트의 경우 싱글스레드라서 스택 메모리를 하나만
+가진다. 스택은 함수 호출이 끝난 후 OS에 의해 정리되지만, 힙 메모리는 그렇지 않다. 따라서
+힙에 있는 쓸모없는 메모리가 해제되지 않는다면, 메모리 누수가 발생하여 프로그램 속도가 느려진다.
+
+<Image
+  src="https://user-images.githubusercontent.com/63354527/233245934-722e65fc-bd4c-48e9-a7d2-04c58e49a4c5.pn"
+  width="800px"
+/>
+
+## Stack
+
+V8 엔진의 Memory는 크게 Stack과 Heap Memory로 나눌 수 있는데 Stack에는 보통 작은 크기의
+원시값(Number, Boolean, undefined, null)들이 저장된다. 또한 식별자, 함수의 매개변수,
+참조타입들의 주소값, 실행 컨텍스트등도 Stack에 저장된다.
+
+## Heap
+
+힙은 동적으로 할당된 메모리 영역으로서, 객체가 프로그램에서 생성될 때마다 메모리를 할당하고 더
+이상 필요하지 않을 때 가비지 컬렉터를 통해서 메모리를 해제하기 때문이다.
+
+힙에서 가비지 컬렉션이 일어나는 부분은 New space와 Old space이다.
+
+- New space(Young generation): 새로 만들어진 Object가 저장된다.
+
+가비지 컬렉터는 Heap Memory에서 동작한다.
 
 ## Mark and Sweep
 
@@ -44,6 +75,40 @@
 - idle-time collection(유휴 시간 수집): 가비지 컬렉터는 실행에 주는 영향을 최소화하기 위해
   CPU가 유휴 상태일 때에만 가비지 컬렉션을 실행한다.
 
+## 마이너 GC(Scavenger)
+
+New Space는 Semi Space로 나뉘어져 있지만 각각의 Semi Space는 From Space와 To Space로 불리며
+마이너 GC가 검사를 할 때마다 살아남은 객체들은 To Space로 대피하게 되고 From Space에 남은 객체들은
+모두 사라지게 된다.
+
+이 때 대피를 할 때마다 메모리 단편화를 막기위해 살아남은 객체들은 연속적으로 붙어있는 메모리로 이동하게 된다.
+
+## 메이저 GC(Full Mark Compact)
+
+Old Space를 검사하는 메이저 GC는 Mark Sweep Compact 알고맂므과 Tri-color 알고리즘을 사용하며
+다음 세단계로 나뉜다.
+
+1. Marking
+
+- GC가 어떤 객체가 사용중인지와 사용되지 않는지를 식별
+- 사용 중이거나 GC 루트(Stack pointers)에서 재귀적으로 도달 가능한 객체는 살아있는 것으로 표시
+- 사실상 heap을 directed graph로 간주한 깊이 우선 탐색
+
+2. Sweeping
+
+- GC가 heap을 순회하면서 활성 상태로 표시되지 않은 객체들의 메모리 주소를 기록한다. 이 공간은
+  이제 사용 가능한 목록(free-list)에서 사용 가능하다고 표시되며 다른 객체들을 저장하는데 사용될 수 있다.
+
+3. 압축(Compacting)
+
+- 스위핑이 일어난 다음, 필요한 경우 살아남은 객체는 함께 이동된다.
+- 이를 통해 메모리 단편화를 감소하고 새로운 객체에 대한 메모리 할당 성능을 높일 수 있다.
+
+또한 메이저 GC는 GC를 수행하는 동안 애플리케이션 실행을 멈추므로 stop-the-world GC라고 한다. 이를
+피하기 위해 V8에서는 다양한 기술을 사용한다.
+
 ## Reference
 
+- [자바스크립트 v8 엔진의 가비지 컬렉션 동작 방식](https://fe-developers.kakaoent.com/2022/220519-garbage-collection/)
 - [가비지 컬렉션](https://ko.javascript.info/garbage-collection)
+- [V8 엔진(자바스크립트, NodeJS, Deno, WebAssembly) 내부의 메모리 관리 시각화하기](https://ui.toast.com/weekly-pick/ko_20200228)
