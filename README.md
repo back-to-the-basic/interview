@@ -2,10 +2,15 @@
 
 기술 면접에 대비하기 위해 각 질문에 대하여 다양한 자료를 읽고 정리한 내용들입니다.
 
+<a href="https://github.com/back-to-the-basic/interview/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=back-to-the-basic/interview" />
+</a>
+
 ## 운영체제
 
-- [프로세스와 스레드에 대해서 설명해주세요.]()
-- [IPC에 대해서 설명해주세요.]()
+- [프로세스와 스레드에 대해서 설명해주세요.](https://bttb-interview.vercel.app/docs/operating-system/%EB%A9%B4%EC%A0%91/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%EC%99%80%20%EC%8A%A4%EB%A0%88%EB%93%9C%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C%20%EC%84%A4%EB%AA%85%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94)
+- [PCB에 대해서 설명해주세요.]()
+- [IPC에 대해서 설명해주세요.](https://bttb-interview.vercel.app/docs/operating-system/%EB%A9%B4%EC%A0%91/IPC%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C%20%EC%84%A4%EB%AA%85%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94)
 - [스레드 Safe란 무엇인지 설명해주세요.]()
 - [뮤텍스와 세마포어에 대해서 설명해주세요.]()
 - [Deadlock, 교착상태에 대해서 설명해주세요.]()

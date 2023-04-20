@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Interview',
   tagline: 'Dinosaurs are cool',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://bttb-interview.vercel.app',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -51,7 +51,8 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'operating-system/개념/1',
+            docId:
+              'operating-system/면접/프로세스와 스레드의 차이에 대해서 설명해주세요',
             position: 'left',
             label: '운영체제',
           },
