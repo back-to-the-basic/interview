@@ -2,6 +2,10 @@
 sidebar_position: 1
 ---
 
+import SEO from '../src/components/SEO'
+
+<SEO/>
+
 # Interview
 
 면접 준비를 위해 정리한 문서입니다.

@@ -1711,19 +1711,19 @@
     tslib "^2.4.0"
     webpack "^5.73.0"
 
-"@docusaurus/plugin-pwa@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@docusaurus/plugin-pwa/-/plugin-pwa-2.3.1.tgz#2fdac66cb94d03ef9e8d07294a23ec96fb92c87c"
-  integrity sha512-Flo513wqK+OlNxMrKgcMkqiVVKFqaCqZortu+3MKvL3uN4KleA7UJjgEfTvBIg7XXj7OrFVXPZv+OEB0gRwGTA==
+"@docusaurus/plugin-pwa@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@docusaurus/plugin-pwa/-/plugin-pwa-2.4.0.tgz#f1a356b3dbc0e90410cf8807fd1a212f6c1e23fe"
+  integrity sha512-urKlFl35YQoIFrSZ5+a0fXaI4KxHHtA9IAsmFbp21HBSwWoD15f0Zy7jSsY6QYj+pECtVPQ3edouI6U8Jlk8vQ==
   dependencies:
     "@babel/core" "^7.18.6"
     "@babel/preset-env" "^7.18.6"
-    "@docusaurus/core" "2.3.1"
-    "@docusaurus/theme-common" "2.3.1"
-    "@docusaurus/theme-translations" "2.3.1"
-    "@docusaurus/types" "2.3.1"
-    "@docusaurus/utils" "2.3.1"
-    "@docusaurus/utils-validation" "2.3.1"
+    "@docusaurus/core" "2.4.0"
+    "@docusaurus/theme-common" "2.4.0"
+    "@docusaurus/theme-translations" "2.4.0"
+    "@docusaurus/types" "2.4.0"
+    "@docusaurus/utils" "2.4.0"
+    "@docusaurus/utils-validation" "2.4.0"
     babel-loader "^8.2.5"
     clsx "^1.2.1"
     core-js "^3.23.3"

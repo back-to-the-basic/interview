@@ -1,17 +1,18 @@
-import React from "react";
-import clsx from "clsx";
-import Link from "@docusaurus/Link";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Layout from "@theme/Layout";
-import HomepageFeatures from "@site/src/components/HomepageFeatures";
-import { Redirect } from "@docusaurus/router";
+import React from 'react';
+import clsx from 'clsx';
+import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import Layout from '@theme/Layout';
+import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import { Redirect } from '@docusaurus/router';
 
-import styles from "./index.module.css";
+import styles from './index.module.css';
+import SEO from '../components/SEO';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx("hero hero--primary", styles.heroBanner)}>
+    <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
@@ -31,14 +32,18 @@ function HomepageHeader() {
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Redirect to="/docs/intro" />
-    // <Layout
-    //   title={`Hello from ${siteConfig.title}`}
-    //   description="Description will go into a meta tag in <head />">
+    // <>
+    // </>
+    <Layout
+      title={`Hello from ${siteConfig.title}`}
+      description="Description will go into a meta tag in <head />"
+    >
+      <SEO />
+      <Redirect to="/docs/intro" />
+    </Layout>
     //   <HomepageHeader />
     //   <main>
     //     <HomepageFeatures />
     //   </main>
-    // </Layout>
   );
 }
