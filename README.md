@@ -19,8 +19,6 @@
 - [사용자 스레드와 커널 스레드에 대해서 설명해주세요.]()
 
 - [스레드 안전(Thread Safe)란 무엇인지 설명해주세요.]()
-- [뮤텍스와 세마포어에 대해서 설명해주세요.]()
-- [Deadlock, 교착상태에 대해서 설명해주세요.](https://bttb-interview.vercel.app/docs/operating-system/%EB%A9%B4%EC%A0%91/%EA%B5%90%EC%B0%A9%EC%83%81%ED%83%9C%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C%20%EC%84%A4%EB%AA%85%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94)
 - [동기와 비동기의 차이에 대해서 설명해주세요.]()
 - [컴파일러와 인터프리터의 차이에 대해서 설명해주세요.]()
 - [논리주소와 물리주소에 대해서 설명해주세요.]()
@@ -35,6 +33,8 @@
 ### 프로세스 동기화
 
 - [IPC에 대해서 설명해주세요.](https://bttb-interview.vercel.app/docs/operating-system/%EB%A9%B4%EC%A0%91/IPC%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C%20%EC%84%A4%EB%AA%85%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94)
+- [Deadlock, 교착상태에 대해서 설명해주세요.](https://bttb-interview.vercel.app/docs/operating-system/%EB%A9%B4%EC%A0%91/%EA%B5%90%EC%B0%A9%EC%83%81%ED%83%9C%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C%20%EC%84%A4%EB%AA%85%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94)
+- [뮤텍스와 세마포어에 대해서 설명해주세요.]()
 
 ## 네트워크
 
