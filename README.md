@@ -10,10 +10,14 @@
 
 ## 운영체제
 
+### 프로세스와 스레드
+
 - [프로세스와 스레드에 대해서 설명해주세요.](https://bttb-interview.vercel.app/docs/operating-system/%EB%A9%B4%EC%A0%91/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%EC%99%80%20%EC%8A%A4%EB%A0%88%EB%93%9C%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C%20%EC%84%A4%EB%AA%85%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94)
-- [PCB에 대해서 설명해주세요.](https://bttb-interview.vercel.app/docs/operating-system/%EB%A9%B4%EC%A0%91/PCB%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C%20%EC%84%A4%EB%AA%85%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94)
-- [IPC에 대해서 설명해주세요.](https://bttb-interview.vercel.app/docs/operating-system/%EB%A9%B4%EC%A0%91/IPC%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C%20%EC%84%A4%EB%AA%85%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94)
+- [프로세스 제어 블록에 대해서 설명해주세요.](https://bttb-interview.vercel.app/docs/operating-system/%EB%A9%B4%EC%A0%91/PCB%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C%20%EC%84%A4%EB%AA%85%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94)
+- [프로세스 상태 다이어그램을 바탕으로 프로세스의 상태를 설명해주세요.]()
 - [컨텍스트 스위칭이 무엇인지 설명해주세요.](https://bttb-interview.vercel.app/docs/operating-system/%EB%A9%B4%EC%A0%91/%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%20%EC%8A%A4%EC%9C%84%EC%B9%AD%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C%20%EC%84%A4%EB%AA%85%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94)
+- [사용자 스레드와 커널 스레드에 대해서 설명해주세요.]()
+- [IPC에 대해서 설명해주세요.](https://bttb-interview.vercel.app/docs/operating-system/%EB%A9%B4%EC%A0%91/IPC%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C%20%EC%84%A4%EB%AA%85%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94)
 - [스레드 안전(Thread Safe)란 무엇인지 설명해주세요.]()
 - [뮤텍스와 세마포어에 대해서 설명해주세요.]()
 - [Deadlock, 교착상태에 대해서 설명해주세요.](https://bttb-interview.vercel.app/docs/operating-system/%EB%A9%B4%EC%A0%91/%EA%B5%90%EC%B0%A9%EC%83%81%ED%83%9C%EC%97%90%20%EB%8C%80%ED%95%B4%EC%84%9C%20%EC%84%A4%EB%AA%85%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94)
