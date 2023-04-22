@@ -45,8 +45,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId:
-              'operating-system/면접/프로세스와 스레드의 차이에 대해서 설명해주세요',
+            docId: 'operating-system/면접/프로세스와 스레드/프로세스와 스레드',
             position: 'left',
             label: '운영체제',
           },
