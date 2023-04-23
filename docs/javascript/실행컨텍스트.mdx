@@ -2,6 +2,9 @@
 
 실행 컨텍스트는 실행할 코드에 제공할 환경 정보들을 모아놓은 객체이다.
 
+실행컨텍스트를 만들 때 VariableEnvironment에 정보를 먼저 담은 다음 이를 그대로 복제해서
+LexicalEnvironment를 만들고, 이후에는 LexicalEnvironment를 사용한다.
+
 자바스크립트는 동일한 환경에 있는 환경 정보들을 모은 실행 컨텍스트를 콜스택에 쌓아올린 후
 실행하여 코드의 환경과 순서를 보장할 수 있다.
 
@@ -25,15 +28,25 @@ outerEnviromentReference가 포함되어 있다.
 
 VariableEnvironment에 먼저 정보를 담고 그대로 LexicalEnvironment에 복사해 사용한다.
 
+VariableEnvironment에 담기는 내용은 LexicalEnvironment에 담기는 내용과 같지만 최초 실행시
+스냅샷을 유지한다는 점이 다르다.
+
 ## LexicalEnvironment
+
+LexicalEnvironment 내부는 environmentRecord와 outerEnvironmentReference로
+구성되어 있다.
 
 LexicalEnvironment는 초기에는 VariableEnvironment와 같지만 변경 사항이 실시간으로
 적용된다. 즉, VariableEnvironment 초기 상태를 기억하고 있으며, LexicalEnvironment
 최신 상태를 저장하고 있다.
 
-EnvironmentRecord란 현재 컨텍스트와 관련된 식별자와 식별자에 바인딩된 값이 기록되는 공간이다.
+environmentRecord란 현재 컨텍스트와 관련된 식별자와 식별자에 바인딩된 값이 기록되는 공간이다.
 더불어 실행 컨텍스트 내부 전체를 처음부터 끝까지 확인하며 순서대로 수집한다.
 
 ## ThisBinding
 
 - 식별자가 바라봐야 할 대상 객체
+
+## Referecne
+
+- 코어 자바스크립트
