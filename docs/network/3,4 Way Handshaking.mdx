@@ -19,19 +19,19 @@ import Image from '@site/src/components/Image';
 <br />
 <br />
 
-3 Way Handshaking을 수행하기 위해서는 TCP 헤더에 표시한 플래그들이 사용되며, 이러한 플래그들을
-컨트롤 비트라고 부른다.
+3 Way Handshaking을 수행하기 위해서는 TCP 헤더에 표시한 플래그들이 사용되며,
+이러한 플래그들을 컨트롤 비트라고 부른다.
 
 3 Way Handshaking은 SYN(동기화)과 ACK(승인)로 진행됩니다.
 
 1. 먼저 클라이언트는 서버에게 접속을 요청하는 SYN 패킷을 보냅니다.
 2. 서버는 SYN 패킷을 받고 클라이언트에게 요청을 수락한다는 ACK와 SYN 플래그가 설정된 패킷을 보낸다.
 3. 클라이언트는 다시 서버에게 ACK를 보낸다.
-4. 이제 3 Way Handshaking으로 기기간 연결이 성립되었으니, 데이터 통신이 가능해집ㅈ니다.
+4. 이제 3 Way Handshaking으로 기기간 연결이 성립되었으니, 데이터 통신이 가능해집니다.
 
 ## 4 Way Handshaking
 
-패킷 통신이 끝k났다면, TCP 연결을 종료해야 한다.
+패킷 통신이 끝났다면, TCP 연결을 종료해야 한다.
 
 <Image
   src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcQfd0N%2FbtrEtMWYTYr%2FImpYh4gAvgtw2nafO4LP3k%2Fimg.png"
@@ -39,6 +39,7 @@ import Image from '@site/src/components/Image';
 />
 
 <br />
+
 여기서도 TCP의 컨트롤 비트가 사용되며 해당 단계에서는 ACK(승인), FIN(종료) 플래그가
 사용된다.
 
