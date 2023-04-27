@@ -13,14 +13,11 @@ const config = {
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: "facebook", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
-
+  organizationName: "back-to-the-basic",
+  projectName: "interview",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
+
   i18n: {
     defaultLocale: "ko",
     locales: ["ko"],
@@ -59,13 +56,6 @@ const config = {
         },
         items: [
           {
-            type: "docSidebar",
-            sidebarId: "tutorialSidebar",
-            position: "left",
-            label: "Tutorial",
-          },
-          { to: "/blog", label: "Blog", position: "left" },
-          {
             type: "doc",
             docId: "operating-system/면접/프로세스와 스레드/프로세스와 스레드",
             position: "left",
@@ -101,6 +91,7 @@ const config = {
             position: "left",
             label: "WEB",
           },
+          { to: "/blog", label: "Blog", position: "left" },
           {
             href: "https://github.com/back-to-the-basic/interview",
             label: "GitHub",
@@ -207,21 +198,6 @@ module.exports = config
 //     locales: ['ko'],
 //   },
 //   themeConfig: {},
-//   presets: [
-//     [
-//       'classic',
-//       /** @type {import('@docusaurus/preset-classic').Options} */
-//       ({
-//         docs: {
-//           sidebarPath: require.resolve('./sidebars.js'),
-//           editUrl: 'https://github.com/back-to-the-basic/interview',
-//         },
-//         theme: {
-//           customCss: require.resolve('./src/css/custom.css'),
-//         },
-//       }),
-//     ],
-//   ],
 //   themeConfig:
 //     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 //     ({
