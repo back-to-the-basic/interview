@@ -6,6 +6,7 @@ import Layout from '@theme/Layout';
 import MOZI from '@site/static/img/mozi.svg';
 
 import styles from './index.module.css';
+import { useA2HS } from '../hooks/useA2HS';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -26,6 +27,7 @@ function HomepageHeader() {
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
+  const {} = useA2HS();
   return (
     <Layout title={`${siteConfig.title}`} description="Description will go into a meta tag in <head />">
       <main>
