@@ -16,7 +16,6 @@ export const useA2HS = () => {
     console.log('hi');
     const handler = (e) => {
       console.log(e, '????');
-      console.log(typeof e, '??');
       console.log(e.platforms, '???');
 
       e.preventDefault();

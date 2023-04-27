@@ -1,4 +1,4 @@
-# [Interview](https://bttb-interview.vercel.app/docs/intro)
+# [Interview](https://bttb-interview.vercel.app)
 
 기술 면접에 대비하기 위해 각 질문에 대하여 다양한 자료를 읽고 정리한 내용들입니다.
 
