@@ -1,6 +1,0 @@
-{
-  "parser": "@babel/eslint-parser",
-  "rules": {},
-  "plugins": ["@docusaurus"],
-  "extends": ["plugin:mdx/recommended", "plugin:@docusaurus/recommended"]
-}
