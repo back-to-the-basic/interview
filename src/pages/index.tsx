@@ -29,12 +29,16 @@ export default function Home() {
   return (
     <Layout title={`${siteConfig.title}`} description="Description will go into a meta tag in <head />">
       <main>
-        <DropMOZI />
+        <Link to={'docs/operating-system/면접/프로세스와%20스레드/process-vs-thread'}>
+          <div className={styles.box}>
+            <DropMOZI />
+          </div>
+        </Link>
       </main>
     </Layout>
   );
 }
 
 function DropMOZI() {
-  return <MOZI />;
+  return <MOZI height="300px" width="500px" />;
 }
