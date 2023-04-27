@@ -1,6 +1,28 @@
 {
-  "parser": "@babel/eslint-parser",
-  "rules": {},
-  "plugins": ["@docusaurus"],
-  "extends": ["plugin:mdx/recommended", "plugin:@docusaurus/recommended"]
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": ["plugin:react/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 13,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint"],
+  "rules": {
+    "import/no-unresolved": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
+    "react/jsx-filename-extension": ["error", { "extensions": [".tsx", ".jsx", "spec.js"] }]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }
