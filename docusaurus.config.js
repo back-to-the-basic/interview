@@ -33,17 +33,11 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          editUrl: "https://github.com/back-to-the-basic/interview",
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          editUrl: "https://github.com/back-to-the-basic/interview",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -72,7 +66,43 @@ const config = {
           },
           { to: "/blog", label: "Blog", position: "left" },
           {
-            href: "https://github.com/facebook/docusaurus",
+            type: "doc",
+            docId: "operating-system/면접/프로세스와 스레드/프로세스와 스레드",
+            position: "left",
+            label: "운영체제",
+          },
+          {
+            type: "doc",
+            docId: "network/google.com",
+            position: "left",
+            label: "Network",
+          },
+          {
+            type: "doc",
+            docId: "computer-structure/개념/1",
+            position: "left",
+            label: "컴퓨터구조",
+          },
+          {
+            type: "doc",
+            docId: "react/Flux",
+            position: "left",
+            label: "React",
+          },
+          {
+            type: "doc",
+            docId: "javascript/1",
+            position: "left",
+            label: "JavaScript",
+          },
+          {
+            type: "doc",
+            docId: "web/쿠키와세션",
+            position: "left",
+            label: "WEB",
+          },
+          {
+            href: "https://github.com/back-to-the-basic/interview",
             label: "GitHub",
             position: "right",
           },
@@ -202,47 +232,7 @@ module.exports = config
 //           src: 'img/logo.svg',
 //         },
 //         items: [
-//           {
-//             type: 'doc',
-//             docId: 'operating-system/면접/프로세스와 스레드/프로세스와 스레드',
-//             position: 'left',
-//             label: '운영체제',
-//           },
-//           {
-//             type: 'doc',
-//             docId: 'network/google.com',
-//             position: 'left',
-//             label: 'Network',
-//           },
-//           {
-//             type: 'doc',
-//             docId: 'computer-structure/개념/1',
-//             position: 'left',
-//             label: '컴퓨터구조',
-//           },
-//           {
-//             type: 'doc',
-//             docId: 'react/Flux',
-//             position: 'left',
-//             label: 'React',
-//           },
-//           {
-//             type: 'doc',
-//             docId: 'javascript/1',
-//             position: 'left',
-//             label: 'JavaScript',
-//           },
-//           {
-//             type: 'doc',
-//             docId: 'web/쿠키와세션',
-//             position: 'left',
-//             label: 'WEB',
-//           },
-//           {
-//             href: 'https://github.com/back-to-the-basic/interview',
-//             label: 'GitHub',
-//             position: 'right',
-//           },
+
 //         ],
 //       },
 //       plugins: [
