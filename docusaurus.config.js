@@ -170,7 +170,7 @@ const config = {
           {
             tagName: 'meta',
             name: 'theme-color',
-            content: 'rgb(37, 194, 160)',
+            content: 'rgb(111, 91, 246)',
           },
         ],
       },
