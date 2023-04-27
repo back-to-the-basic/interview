@@ -15,9 +15,14 @@ export const useA2HS = () => {
   useEffect(() => {
     console.log('hi');
     const handler = (e) => {
-      console.log(e);
-      console.log(typeof e);
+      console.log(e, '????');
+      console.log(typeof e, '??');
+      console.log(e.platforms, '???');
+
+      e.preventDefault();
+      setDefferedPrompt(e);
     };
+
     window.addEventListener('beforeinstallprompt', handler);
 
     return () => {
@@ -27,6 +32,9 @@ export const useA2HS = () => {
 
   const installApp = () => {
     defferedPrompt?.prompt();
+    defferedPrompt?.userChoice.then((choiceResult) => {
+      clearPrompt();
+    });
   };
 
   const clearPrompt = () => {
