@@ -51,8 +51,8 @@ const config = {
       navbar: {
         title: "Interview",
         logo: {
-          alt: "My Site Logo",
-          src: "img/logo.svg",
+          alt: "MOZI",
+          src: "img/mozi.svg",
         },
         items: [
           {
