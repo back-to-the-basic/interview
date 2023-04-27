@@ -1,7 +1,9 @@
-import React from "react"
-import Link from "@docusaurus/Link"
+import React from 'react';
+import Link from '@docusaurus/Link';
 
-const Image = ({ src, width, height, referenceLink, description }) => {
+function Image({
+  src, width, height, referenceLink, description,
+}) {
   return (
     <div>
       <img
@@ -9,25 +11,26 @@ const Image = ({ src, width, height, referenceLink, description }) => {
         style={{
           width,
           height,
-          display: "block",
-          margin: "auto",
+          display: 'block',
+          margin: 'auto',
         }}
+        alt={description || ''}
       />
       {description && (
         <Link
           to={referenceLink}
           style={{
-            width: "100%",
-            display: "block",
-            margin: "auto",
-            textAlign: "center",
+            width: '100%',
+            display: 'block',
+            margin: 'auto',
+            textAlign: 'center',
           }}
         >
           {description}
         </Link>
       )}
     </div>
-  )
+  );
 }
 
-export default Image
+export default Image;
