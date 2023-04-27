@@ -1,0 +1,161 @@
+import Image from '@site/src/components/Image';
+
+# 가비지 컬렉션
+
+자바스크립트는 도달 가능성(reachability)이라는 개념을 사용해 메모리 관리를 수행한다.
+도달 가능한 값은 쉽게 말해 어떻게든 접근하거나 사용할 수 있는 값을 의미한다.
+도달 가능한 값은 메모리에서 삭제되지 않는다.
+
+1. 아래 값들은 그 태생부터 도달가능하기 때문에, 명백한 이유 없이는 삭제되지 않는다.
+
+- 현재 함수의 지역 변수와 매개변수
+- 중첩 함수의 체인에 있는 함수에서 사용되는 변수와 매개변수
+- 전역 변수
+
+이런 값은 루트(root)라고 부른다.
+
+2. 루트가 참조하는 값이나 체이닝으로 루트에서 참조할 수 있는 값은 도달 가능한 값이된다.
+
+전역 변수에 객체가 저장되어 있다고 가정해보자. 이 객체의 프로퍼티가 또 다른 객체를
+참조하고 있다면, 프로퍼티가 참조하는 객체는 도달 가능한 값이된다. 이 객체가 참조하는 다른
+모든 것들도 도달 가능하다고 여겨진다.
+
+자바스크립트 엔진 내에서는 **가비지 컬렉터**가 끊임없이 동작한다. 가비지 컬렉터는 모든
+객체를 모니터링하고, 도달할 수 없는 객체는 삭제한다.
+
+## 메모리 구조(V8 엔진)
+
+프로그램을 실행하면 메모리의 Resident Set이라는 빈 공간이 할당됩니다. Resident Set은
+스택 영역과 힙 영역으로 나눌 수 있다. 자바스크립트의 경우 싱글스레드라서 스택 메모리를 하나만
+가진다. 스택은 함수 호출이 끝난 후 OS에 의해 정리되지만, 힙 메모리는 그렇지 않다. 따라서
+힙에 있는 쓸모없는 메모리가 해제되지 않는다면, 메모리 누수가 발생하여 프로그램 속도가 느려진다.
+
+<Image
+  src="https://user-images.githubusercontent.com/63354527/233245934-722e65fc-bd4c-48e9-a7d2-04c58e49a4c5.pn"
+  width="800px"
+/>
+
+### Stack
+
+V8 엔진의 Memory는 크게 Stack과 Heap Memory로 나눌 수 있는데 Stack에는 보통 작은 크기의
+원시값(Number, Boolean, undefined, null)들이 저장된다. 또한 식별자, 함수의 매개변수,
+참조타입들의 주소값, 실행 컨텍스트등도 Stack에 저장된다.
+
+### Heap
+
+힙은 동적으로 할당된 메모리 영역으로서, 객체가 프로그램에서 생성될 때마다 메모리를 할당하고 더
+이상 필요하지 않을 때 가비지 컬렉터를 통해서 메모리를 해제하기 때문이다.
+
+힙에서 가비지 컬렉션이 일어나는 부분은 New space와 Old space이다.
+
+- New space(Young generation): 새로 만들어진 Object가 저장된다.
+- Old space(Old generation: New space에서 마이너 가비지 컬렉션이 2번 발생할 동안 살아남은
+  객체들이 저장됩니다. 이 영역은 두개로 나눌 수 있습니다.
+  - Pointer space: 다른 객체를 참조하는 객체, 즉 다른 객체에 대한 포인터를 가진 객체
+  - Data space: 문자열, 실수 등의 데이터만을 가진 객체
+
+가비지 컬렉터는 Heap Memory에서 동작한다.
+
+## 가비지 컬렉터(GC)
+
+V8은 힙 영역을 generations라고 불리는 New, Old space로 나눴습니다. New space는 2개의 semi Space로
+나뉜다. 객체는 처음에 New space의 첫 번째 semi space에 할당됩니다. 만약 GC로부터 한 번 생존한다면, 다른
+semi space로 이동한다. 그리고 생존한 객체들이 또 한 번 GC로부터 생존하면, Old space로 이동한다.
+
+<Image
+  src="https://fe-developers.kakaoent.com/static/846e2d49e1223a9d9eabe29e8a30eb30/78612/v8_generation.png"
+  width="800px"
+/>
+
+가비지 컬렉션은 New space에서의 마이너 GC와 Old space에서의 메이저 GC로 각기 다른 방식으로 동작한다.
+
+The Generational Hypothesis 가설에 따라서 대부분의 경우 새로운 객체가 오래된 객체보다 쓸모없어질 가능성이
+높다. 오래된 객체가 쓸모없어질 가능성이 낮은데 GC가 모든 객체를 매번 검사하는 것은 비효율적이다.
+
+객체의 특성에 맞춰 힙 영역을 크게 New space와 Old space로 분류하여 새로운 객체는 New space에서, 오래된
+객체는 Old space에서 각 영역에 최적화된 GC들(마이너, 메이저)로 관리한다. 마이너 GC는 객체들의 생명주기가 짧은
+New space에서 빠르게 가비지 컬렉션을 하고, 메이저 GC는 메모리 사이즈가 큰 Old space에서 가비지 컬렉션을 한다.
+
+## 마이너 GC(Scavenger)
+
+마이너 GC에서 살아남은 객체들은 항상 새로운 곳으로 대피(evacuation)한다. 즉 2개의 semi space가 있고,
+이 대피 과정을 위해서 언제나 1개의 semi space는 비어있다. 이 비어있는 영역은 To space, 객체들이
+머무르는 영역은 From space라고 부른다. From space에서 To space로 이동할 때 살아남은 객체들은
+연속적인(붙어있는) 메모리로 이동한다. 이는 메모리 단편화를 주기적으로 방지해주는 장점이 있다. 그리고
+객체는 새로운 메모리 주소값으로 포인터가 갱신된다.
+
+<Image
+  src="https://fe-developers.kakaoent.com/static/602d9c496f0c8e1f28795c2b2d0f46ba/78612/minorGC_evacuation.png"
+  width="800px"
+  description="Mark & Sweep 알고리즘으로 살아남을 객체를 정한다."
+/>
+
+From space에서 To space로 생존한 객체들의 대피가 완료되면, From space에 남아있는 더 이상 쓸모없는 객체들을
+버린다. 마지막으로 From space와 To space의 역할을 서로 바꿔준다.
+
+<Image
+  src="https://fe-developers.kakaoent.com/static/9a46740cb29986b5a35097be99ad3612/78612/minorGC_switch.png"
+  width="800px"
+/>
+
+새로운 객체가 할당된다고 가정해보자. 먼저, From space의 다음 빈 주소에 할당된다. 그리고 새로운 객체는 생존하여
+To space로 대피한다. 하지만 기존에 한 번 생존했던 4개의 객체는 또 한번 생존하면 To space가 아닌 Old space로
+이동된다.
+
+<Image
+  src="https://fe-developers.kakaoent.com/static/210fee22778e55caac1f79bc3038eeac/78612/minorGC_twice_live.png"
+  width="800px"
+/>
+
+## 메이저 GC
+
+Old Space를 검사하는 메이저 GC는 Mark Sweep Compact 알고맂므과 Tri-color 알고리즘을 사용하며
+다음 세단계로 나뉜다. 기본적인 로직은 참조되지 않은 객체를 더 이상 쓸모없는 객체로 간주한다.
+
+1. Marking
+
+- GC가 어떤 객체가 사용중인지와 사용되지 않는지를 식별
+- 사용 중이거나 GC 루트(Stack pointers)에서 재귀적으로 도달 가능한 객체는 살아있는 것으로 표시
+- 사실상 heap을 directed graph로 간주한 깊이 우선 탐색
+
+2. Sweeping
+
+- GC가 heap을 순회하면서 활성 상태로 표시되지 않은 객체들의 메모리 주소를 기록한다. 이 공간은
+  이제 사용 가능한 목록(free-list)에서 사용 가능하다고 표시되며 다른 객체들을 저장하는데 사용될 수 있다.
+
+3. 압축(Compacting)
+
+- 스위핑이 일어난 다음, 필요한 경우 살아남은 객체는 함께 이동된다.
+- 이를 통해 메모리 단편화를 감소하고 새로운 객체에 대한 메모리 할당 성능을 높일 수 있다.
+
+또한 메이저 GC는 GC를 수행하는 동안 애플리케이션 실행을 멈추므로 stop-the-world GC라고 한다. 이를
+피하기 위해 V8에서는 다양한 기술을 사용한다.
+
+## Mark and Sweep
+
+- 가비지 컬렉터는 루트(root)정보를 수집하고 이를 mark(기억)한다.
+- 루트가 참조하고 있는 모든 객체를 방문하고 이것들을 'mark'한다.
+- mark된 모든 객체에 방문하고 그 객체들이 참조하는 객체도 mark한다.
+  한번 방문한 객체는 전부 mark 하기 때문에 같은 객체를 다시 방문하는 일은 없다.
+- 루트에서 도달 가능한 모든 객체를 방문할 때까지 위 과정을 반복한다.
+- mark 되지 않은 모든 객체를 메모리에서 삭제한다.
+
+자바스크립트 엔진은 실행에 영향을 미치지 않으면서 가비지 컬렉션을 더 빠르게 하는 다양한
+최적화 기법을 적용한다.
+
+- generational collection(세대별 수집): 객체를 새로운 객체와 오래된 객체로 나눈다.
+  객체 상당수는 생성 이후 제 역할을 빠르게 수행해 금방 쓸모가 없어지는데, 이런 객체들을 새로운 객체로
+  구분한다. 가비지 컬렉터는 이런 객체를 공격적으로 메모리에서 제거한다.
+- incremental collection(점진적 수집): 방문해야 할 객체가 많다면 모든 객체를 한 번에 방문하고 mark하는데
+  상당한 시간이 소모된다. 가비지 컬렉션에 많은 리소스가 사용되어 실행속도도 눈에 띄게 느려진다.
+  자바스크립트 엔진은 이런 현상을 개선하기 위해 가비지 컬렉션을 여러 부분으로 분리한 다음, 각 부분을 별도로
+  수행한다. 작업을 분리하고 변경 사항을 추적하는데 추가 작업이 필요하긴 하지만, 긴 지연 시간을
+  짧은 지연 여러 개로 분산시킬 수 있다는 장점이 있다.
+- idle-time collection(유휴 시간 수집): 가비지 컬렉터는 실행에 주는 영향을 최소화하기 위해
+  CPU가 유휴 상태일 때에만 가비지 컬렉션을 실행한다.
+
+## Reference
+
+- [자바스크립트 v8 엔진의 가비지 컬렉션 동작 방식](https://fe-developers.kakaoent.com/2022/220519-garbage-collection/)
+- [가비지 컬렉션](https://ko.javascript.info/garbage-collection)
+- [V8 엔진(자바스크립트, NodeJS, Deno, WebAssembly) 내부의 메모리 관리 시각화하기](https://ui.toast.com/weekly-pick/ko_20200228)

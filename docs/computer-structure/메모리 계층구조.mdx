@@ -1,0 +1,41 @@
+import Image from '@site/src/components/Image';
+
+# 메모리 계층 구조(Memory Hierarchy)
+
+메모리 계층 구조라는 용어에서 '메모리'는 RAM이 아닌 일반 저장 장치를 의미한다.
+
+## 캐시 메모리(Cache Memory)
+
+캐시 메모리는 CPU의 연산 속도와 메모리 접근 속도의 차이를 조금이나마 줄이기 위해 탄생했다.
+캐시 메모리는 CPU와 메모리 사이에 위치하고, 레지스터보다 용량이 크고 메모리보다 빠른 SRAM 기반의
+저장장치이다.
+
+컴퓨터 내부에는 여러개의 캐시 메모리가 있다. 이 캐시 메모리들은 CPU(코어)와 가까운 순서대로 계층을 구성한다.
+코어와 가장 가까운 캐시 메모리를 L1 캐시, 그다음 가까운 캐시 메모리를 L2 캐시, 그 다음 가까운 캐시
+메모리를 L3 캐시라고 부른다.
+
+<Image
+  src="https://user-images.githubusercontent.com/63354527/211457312-4f16b431-5182-47c5-b4e9-d2b7d0f29762.png"
+  referenceLink="https://user-images.githubusercontent.com/63354527/211456755-29878645-5814-43ce-ab70-7a98cf377ef9.png"
+  description="캐시 메모리"
+/>
+
+:::tip
+일반적으로 L1 캐시와 L2 캐시는 코어 내부에, L3 캐시는 코어 외부에 위치해 있다.
+:::
+
+CPU가 메모리 내에 데이터가 필요하다고 판단하면 우선 L1 캐시에 해당 데이터가 있는지를 알아보고,
+없다면 L2, L3 캐시 순으로 데이터를 검색한다.
+
+멀티 코어 프로세서에서 L1-L2-L3 캐시는 일반저긍로 다음과 같이 구현된다.
+L1과 L2 캐시는 코어마다 고유한 캐시 메모리로 할당되고, L3 캐시는 여러 코어가 공유하는 형태로 사용된다.
+
+<Image
+  src="https://user-images.githubusercontent.com/63354527/211458397-6b67b402-6049-4532-97cd-efbb2768492e.png"
+  referenceLink="https://user-images.githubusercontent.com/63354527/211458397-6b67b402-6049-4532-97cd-efbb2768492e.png"
+  description="멀티 코어 프로세서에서의 캐시"
+/>
+
+## Reference
+
+- 혼자 공부하는 컴퓨터 구조 + 운영체제

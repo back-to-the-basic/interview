@@ -1,0 +1,246 @@
+---
+title: 컴퓨터 네트워크
+sidebar_position: 0
+---
+
+import Image from '@site/src/components/Image';
+
+# 컴퓨터 네트워크
+
+**컴퓨터 네트워크를 배운다는 것은 곧 인터넷에서 사용되는 TCP/IP 기술을 배운다는 것**과 같다.
+과거에는 다양한 네트워크 기술이 각각 독립적으로 존재했었지만, **오늘날에는 TCP/IP를 중심으로 통합되고 표준화**되었다.
+그래서 가정이나 기업에서 사용하는 로컬 컴퓨터 네트워크를 인터넷에 연결하는데 더이상 큰 어려움이 없다.
+만약 네트워크 관련 기술이 새롭게 개달된다고하더라고 TCP/IP를 중심으로 통합되므로 신기술의 도입과 적용이 이전보다 빨라질 것이다.
+또한 인터넷이 기존의 통신망을 대체함으로써 지구 반대편에 있는 사람들과 실시간으로 전화해도 과도한 통화료를 걱정하지 않아도 된다.
+이 모든 혜택이 바로 인터넷과 TCP/IP가 있기에 가능한 일이다.
+
+- 인터넷: 전 세계에 걸쳐 파일 전송 등의 데이터 통신 서비스를 받을 수 있는 컴퓨터 네트워크 시스템
+- TCP/IP: 인터넷에서 컴퓨터들이 서로 정보를 주고 받는데 쓰이는 프로토콜의 집합
+- OSI 7 계층 대신 실질적으로 쓰이는 프로토콜
+
+컴퓨터 네트워크 안에서 다양한 프로그램과 데이터, 그리고 통신 장비가 한데 어우려져 동작하고 있다. 이러한 동작들은 각각의 역할에 따라 크게
+애플리케이션 계층, 트랜스포트 계층, 인터넷 계층, 네트워크 인터페이스 계층의 4개의 계층이 분류되고 , 위아래로 인접한 계층끼리 정보를
+주고 받으면서 네트워크 통신을 한다.
+
+Network Access Layer, Internet Layer, Transport Layer, Application Layer로 이루어진다.
+
+컴퓨터 네트워크는 여러 대의 컴퓨터를 서로 연결하여 서로 데이터를 주고 받을 수 있도록 망이 사전에 구축된 것을 말한다.
+연결되는 컴퓨터의 대수가 많아질수록 네트워크의 규모는 커지고, 규모가 커진만큼 더 다양한 정보를 교환하거나 통신방식을 사용할 수 있다.
+
+:::tip
+가정이나 사무실처럼 실내에서 비교적 근거리에 위차한 컴퓨터들이 연결된 것을 LAN(Local Area Network)라고 하고,
+집 밖이나 회사 건물 밖처럼 비교적 먼 거리에 위치한 컴퓨터들과 연결된 것을 WAN(Wide Area Network)라고 한다.
+:::
+
+## 인터넷
+
+여러 네트워크 중에서도 가장 규모가 큰 네트워크가 인터넷이다.
+
+가정이나 기업들의 네트워크가 인터넷에 연결되면 서로 다른 네트워크에 속해 있더라도 인터넷을 통해 자유롭게 데이터를 주고 받을 수 있다.
+여러 네트워크 중에서도 휴대 전화나 스마트폰을 연결하기 위해 무선 기술을 활용한 것을 **무선 네트워크** 혹은 **모바일 네트워크**라고 부른다.
+
+### 인터넷의 역사
+
+1969년 12월에 미국 국방부의 ARPA(Advanced Research Projects Agency, 첨단연구계획국)에서는
+군사 목적으로 컴퓨터 네 대를 연결했는데 이것이 인터넷의 시작이다.
+
+컴퓨터 네 대는 스탠포드 연구소, 캘리포니아대학 로스엔젤레스캠퍼스(UCLA), 캘리포니아 대학
+샌타바버라캠퍼스(UCSB), 유타대학에 설치되었다. 이를 ARPA 네트워라고 했는데 이를 줄여
+ARPANET(알파넷)이라고 부른다.
+
+1970년대에는 ARPANET에 참가하지 않았던 미국의 대학이나 연구소에서도 유사한 네트워크가
+여러 군데 생겨났고, 1980년대에는 학술 네트워크로 확대되었고, 1990년경에는 미국 전역의
+네트워크가 상호 연결되었다. 그 후 상용 서비스 업체가 생겨나면서 민간에서도 인터넷을
+사용할 수 있게 되었다.
+
+## 서버와 클라이언트
+
+네트워크에 연결된 컴퓨터들 중 서비스를 제공하는 쪽을 **서버(server)**라고 부르고, 그 서비스를 받는 쪽을 **클라이언트(client)**라고 부른다.
+
+:::tip
+서버와 클라이언트의 역할은 하드웨어의 성능으로 구분하는 것이 아니라 어떤 역할을 하는 프로그램을 설치하느냐에 따라 결정된다.
+:::
+
+### 피어 투 피어(P2P, Peer-to-Peer)
+
+네트워크에 연결된 두 대의 컴퓨터가 클라이언트와 서버의 역할을 동시에 할 수 있어서 서로에게 서비스를 주거나 받을 수 있는 통신 방식을
+피어 투 피어(P2P) 방식이라고 한다. 주로 개인 컴퓨터 간의 파일 공유나 인터넷 전화(VoIP, Voice over IP)등에 활용된다.
+
+## 패킷 교환 방식
+
+컴퓨터 네트워크에서는 이메일이나 파일과 같은 데이터를 **패킷(Packet)**이라는 작은 단위로 분할한 후 주고받는다. 패킷은 자신이 어디로
+전달되어야 하는지 알 수 있도록 **어드레스(Address)** 정보를 가지고 있다.(송신지, 수신지)
+
+### 회선 교환 방식과 패킷 교환 방식
+
+아날로그 방식의 유선 전화나 3G 방식의 휴대전화는 회선 교환 방식을 사용한다. 회선 교환 방식은 통신하려는 양측을 연결하기 위해 하나의 통신 경로를
+점유한 후 통신하는 방식이라서 기본적으로 일대일 통신만 할 수 있다. 패킷 교환 방식은 주고받을 데이터를 작게 쪼갠 후 다른 데이터의 조각들과 통신
+경로를 공유하며 전송하는 방식이라서 여러 상태와 통신할 때 효과적이다.
+
+## 컴퓨터 네트워크와 계층 모델
+
+컴퓨터 네트워크에서는 다양한 통신 장비와 프로그램이 어울려 통신을 가능하게 한다. 이렇게 통신에 참여하는 여러 장비나 프로그램은 각각 맡은 역할이 있는데,
+이 역할들을 이해하기 쉽게 분류하고 추상화한 것을 계층 모델이라고 한다.
+
+<Image
+  src={
+    'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FV3PaG%2FbtrEtMCw2da%2FKi1cjiSeJkaHoQUNtrA2G0%2Fimg.png'
+  }
+/>
+
+<br />
+
+:::tip
+4계층 중 서비스의 내용을 결정하는 것은 애플리케이션 계층뿐입니다. 나머지 3개 계층은 데이터를 전달하는 통신 기능을 담당합니다.
+:::
+
+만약 내가 www.google.com을 웹 브라우저에 입력했다고 해보자. 구글 웹 서버에 HTTP Request를 보내기 위해선, 아래와 같이 각 계층에 필요한 정보를 담은
+패킷을 만들어야 한다.
+
+<Image
+  src={
+    'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb2guU0%2FbtrEuyDK3ZU%2FKHXSRuiMz6FZdQCkCueO7k%2Fimg.png'
+  }
+  width={'500px'}
+/>
+
+<br />
+
+위 예제에서는 각 계층별로 HTTP, TCP, IP, Ethernet 프로토콜을 사용한다고 가정한다. 먼저 패킷의 Application Layer에는 HTTP Request 헤더가 들어간다.
+
+<Image
+  src={
+    'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbPHkQt%2FbtrEtaqINu2%2F7XkMnAD3PlWHgt9eff7u8K%2Fimg.png'
+  }
+  width={'500px'}
+/>
+
+<br />
+
+```
+  :authority: www.google.com
+  :method: GET
+  :path: /
+  :scheme: https
+  ...
+  ...
+```
+
+<br />
+
+<Image
+  src={
+    'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F9TMi5%2FbtrEuQYqs4H%2FFwykf6D8Kvn2BGqubkKHW0%2Fimg.png'
+  }
+  width={'500px'}
+/>
+
+Transport Layer에는 TCP 헤더가 들어간다. TCP 헤더에는 SP(출발지 포트번호)와 DP(목적지 포트번호)가 기록된다. 출발지 포트번호는 내 컴퓨터에서 만든 소켓의 포트번호이므로, 내 컴퓨터는 알고 있으며,
+목적지 포트 번호 또한 80으로 알고 있다.
+
+<Image
+  src={
+    'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FmikzS%2FbtrEukFHTcw%2FLrrpt2SW2YMEfDPdMycD81%2Fimg.png'
+  }
+  width={'500px'}
+/>
+
+Internet Layer에는 IP 헤더가 들어간다. IP 헤더에서는 SA(출발지 IP 주소)와 DA(목적지 IP 주소)가 들어간다.
+현재 www.google.com이라는 도메인 정보만 알고 있기 때문에 나의 시작 IP 주소는 알고 있지만, 목적지 IP 주소는 아직 모른다.
+따라서 도메인 정보로 목적지의 IP 주소를 알아내기 위해 도메인 서버에 DNS 쿼리를 보내고, IP 주소를 응답받는다.
+
+<Image
+  src={
+    'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fok6Rj%2FbtrEulxP4Fj%2FtpIqb2MAaIUkKrJkcMEAp0%2Fimg.png'
+  }
+  width={'500px'}
+/>
+
+Ethernet 헤더에서 중요하게 볼 것은 SA(출발지 MAC 주소)와 DA(목적지 MAC 주소)이다. 여기서 목적지 MAC 주소는 구글의 MAC 주소가 아닌
+물리적으로 연결된 패킷이 전달될 라우터(예를 들어, 공유기) 또는 게이트웨이의 MAC 주소를 의미한다. 따라서 라우터의 MAC 주소를 알아내기 위해, ARP 프로토콜을 사용한다.
+
+<Image
+  src={
+    'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FwjaFl%2FbtrEs9L8xiz%2FlXBFKF38oUIvfcD9WLCu40%2Fimg.png'
+  }
+  width={'500px'}
+/>
+
+패킷을 전송하기 전, TCP는 연결지향형 프로토콜이기 때문에, 송신측과 수신측이 서로 연결되는 작업이 필요하다. 이 작업을 3 Way Handshaking이라고 한다.
+3 Way Handshaking을 수행하기 위해서는 TCP 헤더에 표시한 플래그들이 사용되며, 이러한 플래그들은 컨트롤 비트라고 부른다.
+3 Way Handshaking은 SYN(동기화)과 ACK(승인)로 진행된다.
+
+<Image
+  src={
+    'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdkm2mE%2FbtrEuk6NQ54%2FGwMLyfFFiIqGnqGYRMwKSK%2Fimg.png'
+  }
+  width={'500px'}
+/>
+
+<br />
+
+- 먼저 클라이언트는 서버에게 접속을 요청하는 SYN 패킷을 보낸다.
+- 서버는 SYN 패킷을 받고, 클라이언트에게 요청을 수락한다는 ACK와 SYN 플래그가 설정된 패킷을 보낸다.
+- 클라이언트는 다시 서버에게 ACK 패킷을 보낸다.
+- 이제 3 Way Handshaking으로 기기 간 연결이 성립되었으니, 데이터 통신이 가능해진다.
+
+<Image
+  src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F9Mzq7%2FbtrEtNnV799%2FiLqHXDM0DgNMmOD8P7sAX1%2Fimg.png"
+  width={'500px'}
+/>
+
+이제 라우팅을 통해 패킷을 목적지 서버에게 전송한다.
+
+- 패킷은 Network Access Layer의 MAC 주소와 Internet Layer의 IP 주소로 라우팅을 반복해 목적지 구글 서버까지 도착한다.
+- 구글 서버는 패킷을 받고 패킷 내부 Transport Layer의 목적지 포트 번호에 적힌 80을 본다.
+- 따라서 Transport Layer는 80번 포트를 사용하고 있는 Application Layer에 데이터를 전송한다.
+- 이후 Application Layer는 HTTP Request 데이터를 받아, "/"에 매핑된 GET 요청을 처리한다.
+- 이후 적절한 HTML을 클라이언트에게 응답한다.
+- 따라서 클라이언트는 라우팅을 통해 전달 받은 www.google.com 에 해당하는 HTML을 브라우저에게 띄운다.
+
+<Image
+  src={
+    'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F57S7q%2FbtrEuVFi43G%2FTKUjuKieC59eAANkr9OpVk%2Fimg.png'
+  }
+  width={'500px'}
+/>
+
+이제 HTTP 요청 및 응답 과정이 끝났으므로, 연결을 종료한다. 여기서도 TCP의 컨트롤 비트가 사용되며, 해당
+단계에서는 ACK, FIN 플래그가 사용된다.
+
+<Image
+  src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbxu2b0%2FbtrEuP6kSGs%2FRwYY6VoSE7316gdnnaPva0%2Fimg.png"
+  width="500px"
+/>
+<br />
+
+클라이언트와 서버의 연결 종료 작업을 4 Way Handshaking이라고 부르며 총 4 단계로 진행된다.
+
+1. 먼저 클라이언트는 서버에게 연결을 종료하겠다는 의미인 FIN 패킷을 전송한다.
+2. 서버는 클라이언트에게 ACK 패킷을 보내고, 클라이언트가 보냈던 요청들에 대해 마저 응답을 보낸다.
+3. 이후, 서버의 응답이 끝나면 클라이언트에게 FIN 패킷을 보낸다.
+4. 클라이언트는 서버의 통신 종료를 확인한 뒤, 서버에게 ACK 패킷을 전송하고 연결이 종료된다.
+
+<Image
+  src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FRVn4D%2FbtrEtNIdCdp%2FBsvT2C2k9UTjb9cKJl6odK%2Fimg.png"
+  width="500px"
+/>
+
+서버가 클라이언트에게 FIN을 보내는 과정에서 한가지 문제가 발생할 수 있다. 서버가 클라이언트에게 FIN을 보내기 전에
+이전에 서버가 클라이언트에게 응답 했던 패킷이 FIN 보다 늦게 도착할 수 있다. 이렇게 되면 클라이언트가 서버의 응답 일부를 받지 못한다.
+
+<Image
+  src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FQzWbF%2FbtrEt2FlsdT%2F5rqucJ2u0vTDbFpzVkFhWk%2Fimg.png"
+  width="500px"
+/>
+
+따라서 클라이언트는 서버로부터 FIN 패킷을 받고, ACK 패킷을 보낸 뒤에도 일정 시간동안 혹시나 아직
+도착하지 않은 잉여 패킷을 기다린다.
+
+이렇게 4 Way Handshaking 이후에도 소켓을 닫지 않고 잉여 패킷을 기다리는 상태를, TIME_WAIT이라고 한다.
+
+## Reference
+
+- TCP/IP 쉽게, 더쉽게
+- 모두의 네트워크
+- [TCP/IP와 TCP/IP 4계층이란?](https://wooono.tistory.com/507)
