@@ -175,6 +175,13 @@ const config = {
         ],
       },
     ],
+    [
+      '@docusaurus/plugin-google-analytics',
+      {
+        trackingID: 'G-7NECSDQ2KN',
+        anonymizeIP: true,
+      },
+    ],
   ],
 };
 
