@@ -1,8 +1,8 @@
 {
-  "name": "younho9 TIL",
-  "short_name": "📝 TIL",
-  "theme_color": "#5468ff",
-  "background_color": "#424242",
+  "name": "Interview",
+  "short_name": "Interview",
+  "theme_color": "#7359fe",
+  "background_color": "#735AFF",
   "display": "standalone",
   "scope": "./",
   "start_url": "./index.html",
