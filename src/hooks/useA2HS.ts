@@ -15,9 +15,11 @@ export const useA2HS = () => {
   useEffect(() => {
     console.log('hi');
     const handler = (e) => {
-      console.log(e);
-      console.log(typeof e);
+      console.log(e, '????');
+      console.log(typeof e, '??');
+      console.log(e.platforms, '???');
     };
+
     window.addEventListener('beforeinstallprompt', handler);
 
     return () => {
