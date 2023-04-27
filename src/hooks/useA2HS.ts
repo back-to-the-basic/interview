@@ -18,6 +18,9 @@ export const useA2HS = () => {
       console.log(e, '????');
       console.log(typeof e, '??');
       console.log(e.platforms, '???');
+
+      e.preventDefault();
+      setDefferedPrompt(e);
     };
 
     window.addEventListener('beforeinstallprompt', handler);
@@ -29,6 +32,9 @@ export const useA2HS = () => {
 
   const installApp = () => {
     defferedPrompt?.prompt();
+    defferedPrompt?.userChoice.then((choiceResult) => {
+      clearPrompt();
+    });
   };
 
   const clearPrompt = () => {
