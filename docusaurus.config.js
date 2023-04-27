@@ -7,7 +7,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula")
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Interview",
-  tagline: "Dinosaurs are cool",
+  tagline: "우왕",
   favicon: "img/favicon.ico",
   url: "https://bttb-interview.vercel.app",
   // Set the /<baseUrl>/ pathname under which your site is served

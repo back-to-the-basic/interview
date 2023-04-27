@@ -26,6 +26,8 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^2.4.0",
     "@tsconfig/docusaurus": "^1.0.7",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
     "typescript": "^5.0.4"
   },
   "browserslist": {
