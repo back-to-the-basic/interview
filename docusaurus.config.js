@@ -65,7 +65,7 @@ const config = {
             type: 'doc',
             docId: 'network/google.com',
             position: 'left',
-            label: 'Network',
+            label: '네트워크',
           },
           {
             type: 'doc',
