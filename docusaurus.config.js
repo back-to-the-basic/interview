@@ -10,8 +10,6 @@ const config = {
   tagline: '우왕',
   favicon: 'img/favicon.ico',
   url: 'https://bttb-interview.vercel.app',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
   organizationName: 'back-to-the-basic',
   projectName: 'interview',
@@ -176,7 +174,7 @@ const config = {
       },
     ],
     [
-      '@docusaurus/plugin-google-analytics',
+      '@docusaurus/plugin-google-gtag',
       {
         trackingID: 'G-7NECSDQ2KN',
         anonymizeIP: true,

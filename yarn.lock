@@ -1938,7 +1938,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/plugin-google-analytics@npm:2.4.0, @docusaurus/plugin-google-analytics@npm:^2.4.0":
+"@docusaurus/plugin-google-analytics@npm:2.4.0":
   version: 2.4.0
   resolution: "@docusaurus/plugin-google-analytics@npm:2.4.0"
   dependencies:
@@ -1953,7 +1953,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/plugin-google-gtag@npm:2.4.0":
+"@docusaurus/plugin-google-gtag@npm:2.4.0, @docusaurus/plugin-google-gtag@npm:^2.4.0":
   version: 2.4.0
   resolution: "@docusaurus/plugin-google-gtag@npm:2.4.0"
   dependencies:
@@ -10874,7 +10874,7 @@ __metadata:
   dependencies:
     "@docusaurus/core": 2.4.0
     "@docusaurus/module-type-aliases": ^2.4.0
-    "@docusaurus/plugin-google-analytics": ^2.4.0
+    "@docusaurus/plugin-google-gtag": ^2.4.0
     "@docusaurus/plugin-pwa": ^2.4.0
     "@docusaurus/preset-classic": 2.4.0
     "@mdx-js/react": ^1.6.22
