@@ -13,4 +13,12 @@
 
 **PR**을 통해 기여해주세요!
 
+## 시작하기
+
+```bash
+yarn set version berry
+yarn install
+yarn start
+```
+
 May the Force be with you.
