@@ -61,7 +61,7 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'network/google.com',
+            docId: 'network/면접/google.com',
             position: 'left',
             label: '네트워크',
           },
