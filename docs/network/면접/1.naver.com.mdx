@@ -1,19 +1,9 @@
 ---
-title: 주소창에 google.com을 치면 일어나는 일
-sidebar_position: 1
+title: 주소창에 naver.com을 검색했을 때 일어나는 일을 설명해주세요.
+sidebar_position: 0
 ---
 
 import Image from '@site/src/components/Image';
-
-이 질문은 컴퓨터 네트워크에서 데이터가 어떻게 전달되는지와 브라우저에서 웹 페이지를 어떻게 렌더링하는지에 대한 모든 것을 포함한다.
-
-브라우저에서 google.com을 검색하면 구글 웹 서버의 80번 포트로 HTTP Request를 보내는 것이다.
-요청을 웹 서버로 전달하기 위해서는 **패킷**을 만들어야한다. 패킷에는 TCP/IP 4계층에서 각 계층에 필요한 정보들이 담겨야 한다.
-
-Application Layer에서는 HTTP 프로토콜, Transport Layer에서는 TCP, Internet Layer에서는 IP,
-Network Access Layer에서는 Ethernet 프로토콜을 사용한다.
-
-웹 서버로부터 HTML, CSS, JavaScript를 받아오면 이후엔 브라우저의 Critical Rendering Path를 따른다.
 
 ## Handling Inputs
 
@@ -29,8 +19,8 @@ Network Access Layer에서는 Ethernet 프로토콜을 사용한다.
 사용자가 주소창에 텍스트를 입력하면 브라우저 프로세스 안에 UI 스레드가 텍스트가 search query인지
 URL인지를 판단한다.
 
-- search query: 검색 엔진에게 전달
-- URL: network thread로 URL 값 전달 준비
+- `search query`: 검색 엔진에게 전달
+- `URL`: network thread로 URL 값 전달 준비
 
 만약 검색어를 입력했다면 사용자가 선택한 검색 엔진의 URL과 조합하여 새로운 URL 형태로 변환하게 된다.
 
@@ -48,18 +38,19 @@ URL인지를 판단한다.
 
 <br />
 
-위 그림과 같이 로딩 스피너가 나타나고, 네트워크 스레드가 DNS lookup과 같은 적절한 프로토콜을 사용하여
-요청에 대하여 TLS(Transfort Layer Security) connection을 만든다. 만약 네트워크 스레드로
-HTTP 301 response가 오면 UI 스레드와 상호작용하여 새로운 URL로 redirect한다.
+위 그림과 같이 로딩 스피너가 나타나고, 네트워크 스레드가 DNS Lookup과 같은 적절한 프로토콜을 사용하여
+요청에 대하여 TLS(Transfort Layer Security) connection을 만든다.
 
-:::tip
-DNS 서버 주소는 컴퓨터에 저장되어 있다.
-DNS도 Application Layer의 프로토콜이다. (53번 포트를 사용)
-Domain이 담긴 Query를 DNS 서버에 보내면 DNS 서버는 해당 Domain의 IP 주소를 반환한다.
-:::
+DNS Lookup 과정은 크롬의 경우 브라우저 -> hosts 파일 -> DNS cache의 순서로 도메인에 매칭되는
+ip를 찾는다.
+일반적으로 설명하는 DNS Lookup은 루트 도메인 서버에서부터 서브 도메인 서버순으로 찾게된다.
 
 :::info
-`nslookup google.com`을 입력하면 구글의 IP 주소를 얻어올 수 있고 이 주소를 입력해도 똑같은 구글 창이 뜬다.
+
+- DNS 서버 주소는 컴퓨터에 저장되어 있다.
+- DNS도 Application Layer의 프로토콜이다. (53번 포트를 사용)
+- Domain이 담긴 Query를 DNS 서버에 보내면 DNS 서버는 해당 Domain의 IP 주소를 반환한다.
+
 :::
 
 ## Read response
