@@ -1,3 +1,22 @@
 # 동기와 비동기에 대해서 설명해주세요.
 
-Blocking, Non-Blocking
+## Blocking I/O
+
+I/O 작업은 User Level(application)에서 직접 수행할 수 없다.
+실제 I/O 작업은 Kernel Level(OS)에서 일어나는 과정이다. 따라서 유저 프로세스(application)는
+커널(OS)에게 I/O 작업에 대한 요청을 해야 한다. I/O 작업을 처리하기 위해서
+User Level에 있던 Applicationㅇㅇ이 시스템 함수를 호출한다.(system call)
+이때 컨텍스트 스위칭이 발생한다. 그리고 Kernel Level에서 해당 I/O 작업이 끝나고 데이터를
+반환하게 되면 그 때가 되서야 애플리케이션 단의 스레드에 걸렸던 block이 풀린다.
+
+애플리케이션 관점에서는 아무런 동작도 안하는 것처럼 보이지만 실제로는 커널에서 I/O 작업을
+수행하느라 block되어 있는 것이다. 바로 이 부분이 blocking I/O의 문제점이다.
+
+## Non-Blocking I/O
+
+Blocking I/O 방식은 요청한 I/O 작업이 끝날 때까지, 완료될 때까지 대기해야 한다.
+끝나기 전에는 반환(return)되지 않기 떄문이다. 그렇기 때문에 커널이 작업을 완료하기
+전까지 유저 프로세스는 작업을 중단한 채 대기해야 한다. I/O 작업은 CPU 자원을 거의 쓰지
+않기 때문에 blocking 방법은 CPU 자원 낭비가 심하다. 이러한 blocking 방식의
+비효율성을 극복하고자 만들어진 것이 non-blocking 방식이다.
+non-blocking 방식은 I/O 작업을 진행하는 동안 유저 프로세스의 작업을 중단시키지 않는다.
