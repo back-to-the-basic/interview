@@ -163,7 +163,7 @@ const config = {
           {
             tagName: 'link',
             rel: 'manifest',
-            href: '/manifest.json', // your PWA manifest
+            href: '/manifest.json',
           },
           {
             tagName: 'meta',
