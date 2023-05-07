@@ -8,7 +8,7 @@
 
 <br/>
 <br/>
-If you can't explain it **simply**, you don't understand it well enough. - Albert Einstein
+If you can't explain it <b>simply</b>, you don't understand it well enough. - Albert Einstein
 
 ## 시작하기
 
