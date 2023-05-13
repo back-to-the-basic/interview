@@ -33,7 +33,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@docusaurus/plugin-google-gtag", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:2.4.0"],\
             ["@docusaurus/plugin-pwa", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:2.4.0"],\
             ["@docusaurus/preset-classic", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:2.4.0"],\
-            ["@mdx-js/react", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.6.22"],\
+            ["@mdx-js/react", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:2.3.0"],\
             ["@tsconfig/docusaurus", "npm:1.0.7"],\
             ["@types/react", "npm:18.2.0"],\
             ["@types/react-dom", "npm:18.2.1"],\
@@ -3488,7 +3488,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@docusaurus/utils", "virtual:9c108d9adc0741a422711cb67497abf9dd29cda46d967e6aa0cd3c13a14f535fab10893ea3b547b2a743ab1957cf614a4c6d4e3292c3e26c5145747d79ba83a8#npm:2.4.0"],\
             ["@docusaurus/utils-common", "virtual:abd88857c86c8169e5ad553d2e7fc544b8f36b39ee19e5f3e5365baf5304b0a303b1f84ea20f4c6c174e25b675a0408fdc18110dd470cf1ab3fd5dc696304747#npm:2.4.0"],\
             ["@docusaurus/utils-validation", "npm:2.4.0"],\
-            ["@mdx-js/react", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.6.22"],\
+            ["@mdx-js/react", "virtual:c75fcab6567c87682cb192da8dfed6214a0ab2201057f7d9aa389afae0e5592571b5eb9b3c101ef58f7549686f0b7c2883cebab23267327ef6dcbe3e4652ea71#npm:1.6.22"],\
             ["@types/react", "npm:18.2.0"],\
             ["@types/react-dom", "npm:18.2.1"],\
             ["clsx", "npm:1.2.1"],\
@@ -4015,10 +4015,31 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.6.22", {\
-          "packageLocation": "./.yarn/__virtual__/@mdx-js-react-virtual-6753799f12/0/cache/@mdx-js-react-npm-1.6.22-57e4c05c2b-bc84bd514b.zip/node_modules/@mdx-js/react/",\
+        ["npm:2.3.0", {\
+          "packageLocation": "./.yarn/cache/@mdx-js-react-npm-2.3.0-d5582a450b-f45fe77955.zip/node_modules/@mdx-js/react/",\
           "packageDependencies": [\
-            ["@mdx-js/react", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.6.22"],\
+            ["@mdx-js/react", "npm:2.3.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:c75fcab6567c87682cb192da8dfed6214a0ab2201057f7d9aa389afae0e5592571b5eb9b3c101ef58f7549686f0b7c2883cebab23267327ef6dcbe3e4652ea71#npm:1.6.22", {\
+          "packageLocation": "./.yarn/__virtual__/@mdx-js-react-virtual-8028b2e2ee/0/cache/@mdx-js-react-npm-1.6.22-57e4c05c2b-bc84bd514b.zip/node_modules/@mdx-js/react/",\
+          "packageDependencies": [\
+            ["@mdx-js/react", "virtual:c75fcab6567c87682cb192da8dfed6214a0ab2201057f7d9aa389afae0e5592571b5eb9b3c101ef58f7549686f0b7c2883cebab23267327ef6dcbe3e4652ea71#npm:1.6.22"],\
+            ["@types/react", "npm:18.2.0"],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:2.3.0", {\
+          "packageLocation": "./.yarn/__virtual__/@mdx-js-react-virtual-409384b8cb/0/cache/@mdx-js-react-npm-2.3.0-d5582a450b-f45fe77955.zip/node_modules/@mdx-js/react/",\
+          "packageDependencies": [\
+            ["@mdx-js/react", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:2.3.0"],\
+            ["@types/mdx", "npm:2.0.5"],\
             ["@types/react", "npm:18.2.0"],\
             ["react", "npm:18.2.0"]\
           ],\
@@ -4819,6 +4840,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@types/mdast", "npm:3.0.11"],\
             ["@types/unist", "npm:2.0.6"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/mdx", [\
+        ["npm:2.0.5", {\
+          "packageLocation": "./.yarn/cache/@types-mdx-npm-2.0.5-3b264b4530-1069baff0b.zip/node_modules/@types/mdx/",\
+          "packageDependencies": [\
+            ["@types/mdx", "npm:2.0.5"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -14702,7 +14732,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@docusaurus/plugin-google-gtag", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:2.4.0"],\
             ["@docusaurus/plugin-pwa", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:2.4.0"],\
             ["@docusaurus/preset-classic", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:2.4.0"],\
-            ["@mdx-js/react", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.6.22"],\
+            ["@mdx-js/react", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:2.3.0"],\
             ["@tsconfig/docusaurus", "npm:1.0.7"],\
             ["@types/react", "npm:18.2.0"],\
             ["@types/react-dom", "npm:18.2.1"],\
