@@ -55,7 +55,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'operating-system/면접/프로세스와 스레드/프로세스와 스레드',
+            docId: 'operating-system/index',
             position: 'left',
             label: '운영체제',
           },
