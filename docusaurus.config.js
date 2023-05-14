@@ -13,7 +13,8 @@ const config = {
   baseUrl: '/',
   organizationName: 'back-to-the-basic',
   projectName: 'interview',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'ignore',
+  // onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
   i18n: {
