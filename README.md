@@ -8,7 +8,6 @@
 
 <br/>
 <br/>
-If you can't explain it <b>simply</b>, you don't understand it well enough. - Albert Einstein
 
 ## 시작하기
 
@@ -17,5 +16,3 @@ yarn set version berry
 yarn install
 yarn start
 ```
-
-May the Force be with you.

@@ -56,7 +56,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'operating-system/index',
+            docId: 'operating-system/공룡책/서론',
             position: 'left',
             label: '운영체제',
           },
@@ -65,6 +65,12 @@ const config = {
             docId: 'network/면접/google.com',
             position: 'left',
             label: '네트워크',
+          },
+          {
+            type: 'doc',
+            docId: 'javascript/1',
+            position: 'left',
+            label: 'JavaScript',
           },
           {
             type: 'doc',
@@ -78,12 +84,7 @@ const config = {
             position: 'left',
             label: 'React',
           },
-          {
-            type: 'doc',
-            docId: 'javascript/1',
-            position: 'left',
-            label: 'JavaScript',
-          },
+
           {
             type: 'doc',
             docId: 'web/쿠키와세션',
