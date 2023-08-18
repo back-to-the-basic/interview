@@ -91,7 +91,6 @@ const config = {
             position: 'left',
             label: 'WEB',
           },
-          { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://github.com/back-to-the-basic/interview',
             label: 'GitHub',
