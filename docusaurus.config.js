@@ -91,7 +91,7 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'project/방슐랭가이드',
+            docId: 'project/방슐랭가이드/index',
             position: 'left',
             label: '프로젝트',
           },
