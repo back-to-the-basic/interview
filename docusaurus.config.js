@@ -16,7 +16,6 @@ const config = {
   onBrokenLinks: 'ignore',
   // onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-
   i18n: {
     defaultLocale: 'ko',
     locales: ['ko'],
@@ -84,12 +83,17 @@ const config = {
             position: 'left',
             label: 'React',
           },
-
           {
             type: 'doc',
             docId: 'web/쿠키와세션',
             position: 'left',
             label: 'WEB',
+          },
+          {
+            type: 'doc',
+            docId: 'project/방슐랭가이드',
+            position: 'left',
+            label: '프로젝트',
           },
           {
             href: 'https://github.com/back-to-the-basic/interview',
@@ -98,51 +102,6 @@ const config = {
           },
         ],
       },
-      // footer: {
-      //   style: "dark",
-      //   links: [
-      //     {
-      //       title: "Docs",
-      //       // items: [
-      //       //   {
-      //       //     label: "Tutorial",
-      //       //     to: "/docs/intro",
-      //       //   },
-      //       // ],
-      //     },
-      //     {
-      //       title: "Community",
-      //       items: [
-      //         {
-      //           label: "Stack Overflow",
-      //           href: "https://stackoverflow.com/questions/tagged/docusaurus",
-      //         },
-      //         {
-      //           label: "Discord",
-      //           href: "https://discordapp.com/invite/docusaurus",
-      //         },
-      //         {
-      //           label: "Twitter",
-      //           href: "https://twitter.com/docusaurus",
-      //         },
-      //       ],
-      //     },
-      //     {
-      //       title: "More",
-      //       items: [
-      //         {
-      //           label: "Blog",
-      //           to: "/blog",
-      //         },
-      //         {
-      //           label: "GitHub",
-      //           href: "https://github.com/facebook/docusaurus",
-      //         },
-      //       ],
-      //     },
-      //   ],
-      //   copyright: `Copyright © ${new Date().getFullYear()} Interview Questions. Built with Docusaurus.`,
-      // },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
