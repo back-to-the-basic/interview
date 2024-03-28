@@ -145,15 +145,17 @@ myFunction();
 let과 const로 선언된 변수는 해당 변수가 정의된 블록 내에서만 접근할 수 있으며 스코프를 벗어나면 자동으로
 가비지 컬렉팅된다.
 
+```ts
 {
-let myData = {
-largeArray: new Array(1000000).fill('some data'),
-id: 1,
-};
+  let myData = {
+    largeArray: new Array(1000000).fill('some data'),
+    id: 1,
+  };
 
-// myData 변수로 무언가를 수행합니다.
-// ...
+  // myData 변수로 무언가를 수행합니다.
+  // ...
 }
+```
 
 ## 수동 메모리 관리 모범 사례
 

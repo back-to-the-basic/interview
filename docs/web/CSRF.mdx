@@ -14,8 +14,8 @@ title: CSRF에 대해서 설명해주세요.
 다음과 같은 시나리오가 있을 수 있다.
 
 - www.mybank.com에 접속해 있는 상태이다.
-- 이 사이트에서 돈을 보낼 때 http://www.mybank.com/transfer?to=<계좌번호>&amount=<액수> 형식으로 보낸다고 하자.
-  www.cute-cat.org 사이트에 접속한다. (악성 사이트이다)
+- 이 사이트에서 돈을 보낼 때 `http://www.mybank.com/transfer?to=<계좌번호>&amount=<액수> 형식으로 보낸다고 하자.
+www.cute-cat.org` 사이트에 접속한다. (악성 사이트이다)
 - 해당 사이트의 관리자가 위에서 말한 돈을 보내는 URL과 쿼리 방식을 알고 있다면 그 요청을 실행하는 CSRF 스크립트를 사이트에 넣을 수 있다.
 - 사이트에 접속하면 해당 스크립트를 실행하게 되고 www.mybank.com 에 요청이 가게 되서 돈을 보내게 된다.
 

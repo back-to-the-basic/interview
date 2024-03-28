@@ -94,7 +94,7 @@ Access-Control-Allow-Origin 헤더와 자신의 출처가 같다면 유효하고
 - 클라이언트에게 인증 정보를 함께 보내야 한다고 알려주기도 한다.
   - cookies, authorization headers, or TLS client ertificates등이 있다.
 - 서버에 쿠키 등의 인증 정보가 필요한 경우 이 헤더를 true로 설정해주어야 한다.
-  - npm cors에서는 { credentials: true } 옵션을 통해 가능하다.
+  - npm cors에서는 `{ credentials: true }` 옵션을 통해 가능하다.
 
 다른 출처와의 통신에서 HTTP 헤더를 사용해 제한된 자원의 접근과 정보 제공이 안전하게 이루어지도록 하는 것이 CORS이다.
 
