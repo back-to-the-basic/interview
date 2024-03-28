@@ -47,11 +47,11 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'Interview',
-        logo: {
-          alt: 'MOZI',
-          src: 'img/mozi.svg',
-        },
+        title: 'TIL',
+        // logo: {
+        // alt: 'MOZI',
+        // src: 'img/mozi.svg',
+        // },
         items: [
           {
             type: 'doc',

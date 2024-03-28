@@ -6,13 +6,6 @@
   <img src="https://contrib.rocks/image?repo=back-to-the-basic/interview" />
 </a>
 
-<br/>
-<br/>
-
-## 시작하기
-
-```bash
-yarn set version berry
-yarn install
-yarn start
-```
+- JavaScript
+  - 모던 자바스크립트 딥 다이브
+  - 코어 자바스크립트
