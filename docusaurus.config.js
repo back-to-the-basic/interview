@@ -47,7 +47,7 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'TIL',
+        title: '홈',
         // logo: {
         // alt: 'MOZI',
         // src: 'img/mozi.svg',
@@ -94,6 +94,12 @@ const config = {
             docId: 'project/방슐랭가이드/index',
             position: 'left',
             label: '프로젝트',
+          },
+          {
+            type: 'doc',
+            docId: 'etc/index',
+            position: 'left',
+            label: 'etc',
           },
           {
             href: 'https://github.com/back-to-the-basic/interview',

@@ -12,15 +12,14 @@ export default function Home() {
   return (
     <Layout title="면접" description="Interview Note">
       <main className="p-2 ">
-        <p className="p-2">면접 노트입니다.</p>
-
-        <div style={{ margin: '0 auto' }}>
+        <div style={{ padding: '1rem' }}>
+          <p>정답도 중요해. 근데 정답으로 가는 과정도 중요해(질문이 정답보다 중요하다)</p>
           룰.
           <br />- 출처를 남긴다.
+          <br />-
         </div>
         {/* <Link to={'docs/operating-system/면접/프로세스와%20스레드/process-vs-thread'}> */}
         {/* <div className={styles.box}> */}
-        {/* <DropMOZI /> */}
         {/* </div> */}
         {/* </Link> */}
       </main>
