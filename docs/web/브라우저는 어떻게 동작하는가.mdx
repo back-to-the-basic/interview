@@ -46,6 +46,39 @@ W3C(World Wide Web Consortium)에서 정한다.
 
 ### CSSOM 트리 구축
 
+### 렌더 트리 구축
+
+- DOM 트리와 CSSOM 트리가 결합되어 렌더링 트리를 형성한다.
+- 렌더링 트리에는 페이지를 렌더링하는 데 필요한 노드만 포함된다.
+
+렌더 트리를 생성하기 위해 브라우저는 다음 작업을 수행한다.
+
+1. DOM 트리의 루트에서 시작하여 표시되는 각 노드를 순회한다.
+   - 일부 노드는 표시되지 않으며 (예: 스크립트 태그, 메타 태그 등) 렌더링된 출력에 반영되지 않으므로 생략된다.
+   - 일부 노드는 CSS를 통해 숨겨지며 렌더링 트리에서도 생략된다. 예를 들어, 위의 예에서 span 노드는 'display: none' 속성을 설정하는 명시적 규칙이 있으므로 렌더링 트리에서 누락된다.
+2. 표시되는 각 노드에 대해 적절한 CSSOM 규칙을 찾아 적용한다.
+3. 콘텐츠 및 계산된 스타일과 함께 표시되는 노드를 내보낸다.
+
+### 페인트
+
+화면에 배치된 요소에 색을 채워 넣는다.
+
+브라우저는 효율적인 페인트를 위해 구성 요소를 여러 개의 레이어로 나눠서 작업하기도 한다.
+
+효율적인 페인트 과정을 위해 구성요소를 여러개의 레이어로 나눠서 작업하기도 한다.
+
+### 컴포지트
+
+컴포지트(composite) 단계는 각 레이어를 합성하는 작업을 한다.
+
+reflow를 발생시키는 속성: position, display, width, height, float, font-family, top, left, font-size, font-weight, line-height, min-height, margin, padding, border 등
+repaint를 발생시키는 속성: background, background-image, background-position, border-radius, border-style, box-shadow, color, line-style, outline 등
+
+transform, opacity와 같은 속성을 사용하면 해당 요소를 별도의 레이어로 분리하고 작업을 GPU에 위임하여 처리함으로써 레이아웃 단계와 페인트 단계를 건너뛸 수 있다. 이것을 하드웨어 가속(GPU 가속)이라고 한다.
+
+특정 요소에 하드웨어 가속을 사용하려면 요소를 별도의 레이어로 분리하여 GPU로 보내야 하는데, transform 속성과 opacity 속성이 이 역할을 한다. 분리된 레이어는 GPU에 의해 처리되어 레이아웃 단계와 페인트 단계 없이 화면상의 요소의 스타일을 변경할 수 있다.
+
 ## Reference
 
+- [렌더 트리 생성, 레이아웃 및 페인트](https://web.dev/articles/critical-rendering-path/render-tree-construction?hl=ko)
 - [브라우저는 어떻게 동작하는가?](https://d2.naver.com/helloworld/59361)
