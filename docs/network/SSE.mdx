@@ -1,0 +1,25 @@
+SSE(Server Sent Event)
+SSE는 서버에서 클라이언트에게 실시간으로 데이터를 전송하는 기술이다.
+
+기본 컨셉은 HTTP connection을 길게 유지하면서, 서버에서 클라이언트에게 데이터를 전송한다. 아래 그림을 보면 이해하기 쉽다.
+
+SSE가 나오게된 배경
+SSE는 서버에서 데이터 변경이 있을때 클라이언트에게 실시간으로 알려주기 위해 주로 사용된다. SSE 기술이 등장하기 전에는 Client에서 서버의 데이터 변경을 확인하기 위해 주로 polling 방식을 사용했다.
+
+Short Polling
+
+클라이언트에서 주기적으로 API를 호출해 서버의 데이터 변경사항을 확인하는 기법이다. 플로우는 아래 그림과 같다.
+
+Short Polling과 비교하면 클라이언트의 요청수가 감소하기 때문에 HTTP overhead는 개선되었다. 하지만 더 좋은 방법이 있다. 바로 SSE이다.
+
+SSE(Server Sent Event)
+
+클라이언트가 서버와 HTTP connection을 맺어두면, 서버에서 데이터의 변화가 있을때마다 응답을 보낸다. (그림은 위에 있으니 생략하겠다.)
+
+SSE를 이용하면 HTTP connection을 한번만 맺기 때문에 HTTP overhead가 Polling 방식(Short Polling, Long Polling)에 비해 월등히 개선된다.
+
+이는 사용자 입장에서 잦은 HTTP 요청을 하지 않아도 되기 때문에 응답시간이 더 빨라지고, 디바이스의 배터리 사용률도 줄어들 수 있다.
+
+(가끔 SSE와 WebSocket을 헷갈리는 분이 있는데 둘은 다른 기술이다. 간략하게 말하면 애초에 사용하는 프로토콜도 다르다. 또한 SSE는 서버에서 클라이언트로 단방향이지만, WebSocket은 클라이언트와 서버 양방향 통신이 가능하다.)
+
+https://hyuk0309.tistory.com/24
