@@ -1,0 +1,52 @@
+---
+title: use
+---
+
+https://github.com/acdlite/rfcs/blob/first-class-promises/text/0000-first-class-support-for-promises.md
+
+이 RFC는 캐싱을 다루지 않기 때문에 그 자체로는 완전한 데이터 가져오기 솔루션이 아니다.
+
+`await` and `use` are primitives for reading the asynchronous result of a promise, but they do not specify the lifetime of the underlying data.
+
+Adds first class support for reading the result of a JavaScript Promise using Suspense:
+
+- Introduces support for async/await in Server Components. Write Server Components using standard JavaScript `await` syntax by defining your component as an async function.
+- Introduces the `use` Hook. Like `await`, `use` unwraps the value of a promise, but it can be used inside normal components and Hooks, including on the client.
+
+While existing data libraries that implement a caching strategy should find it easy to integrate without significant changes, a seperate RFC will introduce an API called `cache` to assist with caching data.
+
+Taken together, these proposals will unlock officail support for Suspense for Data fetching.
+
+결국 react component 가 멱등하기 위해 idempotent use + cache를 도입하는 것인가 ?
+
+You can think of `use` as a React-only version of `await`. Just as `await` can only be used inside async functions, `use` can only be used inside React components and Hooks:
+
+```ts
+// `use` inside of a React component or Hook...
+const data = use(promise);
+
+// ...roughly equates to `await` in an async function
+const data = await promise;
+```
+
+# Motivation
+
+## Seamles integration with JavaScript ecosystem
+
+One of our primary motivations is to provide a seamless integration with the rest of the JavaScript ecosystem, where promises are the idiomatic way to represent asynchronous values.
+
+However, the original proposal for Server Components did not make it easy to access promise-based APIs. Each data source needed to be wrapped with special bindings that were tricky to implement correctly. There was no straightforward way to wrap an arbitrary, one-off async operation.
+
+We were frequently asked: why not use async/await? Originally, we wanted to have a consistent API for accessing data across Server Components, Client Components, and Shared Components. However, we're unable to support async/await in Client Components for technical reasons we'll cover in a later section.
+
+Ideally we would prefer to support async/await everywhere. We have no desire to replace promises with our own asynchronous primitive, nor do we want to require every asynchronous API to be wrapped React-specific bindings. But at the time of the original RFC, we judged that having a consistent API across Server and Client Components was the more important goal.
+
+We've since changed our mind. We now believe that the benefits of async/await in Server Components outweigh the downsides of having a different API (`use`) on the client.
+
+One reason is that we underestimated how frequently Server Components might need to perform ad hoc asynchronous operations. Promise-based APIs are ubiquitous in JavaScript server applications, and it's annoying (if not completely infeasible) to have to write React-specific bindings for every one. This was one of the most frequent criticisms we received about the original proposal.
+
+We realized that in our desire to provide a consistent API across Server and Client components, we hadn't actually removed the need for async/await everywhere else — developers would still need to use async/await when performing logic outside React components, like submitting forms and processing server responses.
+
+## Avoiding an uncanny valley between server and client
+
+Making Server and Client components easy to distinguish at a glance will help avoid an uncanny valley, where developers must constantly spend mental energy discerning which components run in which environment.
